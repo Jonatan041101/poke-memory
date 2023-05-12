@@ -1,0 +1,69 @@
+.card {
+	height: 100%;
+	width: 100%;
+	@include flex(column, nowrap, flex-end, center, 0);
+	position: absolute;
+	backface-visibility: hidden;
+	transition: 0.4s ease;
+	transform: rotateY(180deg);
+	&__perspective {
+		perspective: 500px;
+		&:hover .card__flip {
+			transform: rotateY(180deg);
+		}
+	}
+	&__flip {
+		position: relative;
+		transform-style: preserve-3d;
+		width: 8em;
+		height: 10em;
+		transition: 0.4s ease;
+	}
+	&__all {
+		@include flex(row, wrap, center, center, 1.7em);
+	}
+	&__container {
+		@include flex(column, nowrap, flex-end, center, 0);
+		position: relative;
+		background: #343e63;
+		height: 100%;
+		width: 100%;
+		padding: 1em 0.2em;
+		border-radius: 2em;
+		cursor: pointer;
+	}
+	&__section {
+		width: 100%;
+		font-size: 0.9em;
+		@include flex(column, nowrap, center, center, 0.3em);
+	}
+	&__image {
+		position: absolute;
+		top: -2em;
+		width: 6em;
+		height: 6em;
+		object-fit: contain;
+	}
+	&__info {
+		@include flex(row, nowrap, center, center, 0.3em);
+	}
+	&__types {
+		@include flex(row, nowrap, center, center, 0.3em);
+	}
+	&__back {
+		width: 100%;
+		height: 100%;
+		background: #000;
+		border: 0.2em solid #fff;
+		border-radius: 2em;
+		position: absolute;
+		backface-visibility: hidden;
+		transition: 0.4s ease;
+		transform: rotateY(0deg);
+	}
+	&__pokeball {
+		object-fit: contain;
+		width: 100%;
+		height: 100%;
+	}
+}

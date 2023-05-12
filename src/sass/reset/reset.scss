@@ -171,11 +171,16 @@ body {
 	scrollbar-width: none; /* Esto oculta la barra de desplazamiento */
 	// font-family: PokemonSolid;
 	font-family: GothamLight;
+	// font-family: 'Courier New';
 	overflow-x: hidden;
 	position: relative;
 	// background: #fb6a3e;
-	background-image: url('../../assets/fondo.jpg');
+	background-image: url('https://res.cloudinary.com/damjxqb5f/image/upload/v1683875290/fondo_xvurdo.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	backdrop-filter: blur(0.6em);
 }
+// https://res.cloudinary.com/damjxqb5f/image/upload/v1683875290/fondo_xvurdo.jpg //TODO URL de una imagen que pesa menos la misma del background image
 select::-ms-expand {
 	display: none; /*Evita que se muestre la flecha por defecto en versiones de IE*/
 	outline: none;

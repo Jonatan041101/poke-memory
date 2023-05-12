@@ -11,6 +11,14 @@
   font-family: GothamMedium;
   src: url("../../public/fonts/Gotham-Font/GothamBook.ttf");
 }
+@font-face {
+  font-family: FuturaBold;
+  src: url("../../public/fonts/Futura/FuturaBold.ttf");
+}
+@font-face {
+  font-family: FuturaLight;
+  src: url("../../public/fonts/Futura/FuturaLight.ttf");
+}
 /* Definimos las Custom properties */
 :root {
   /* Colores */
@@ -179,7 +187,10 @@ body {
   font-family: GothamLight;
   overflow-x: hidden;
   position: relative;
-  background-image: url("../../assets/fondo.jpg");
+  background-image: url("https://res.cloudinary.com/damjxqb5f/image/upload/v1683875290/fondo_xvurdo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(0.6em);
 }
 
 select::-ms-expand {
@@ -216,6 +227,191 @@ select:focus {
   top: 38.5em;
   background: #f47923;
   opacity: 0.4;
+}
+
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: 0.4s ease;
+  transform: rotateY(180deg);
+}
+.card__perspective {
+  perspective: 500px;
+}
+.card__perspective:hover .card__flip {
+  transform: rotateY(180deg);
+}
+.card__flip {
+  position: relative;
+  transform-style: preserve-3d;
+  width: 8em;
+  height: 10em;
+  transition: 0.4s ease;
+}
+.card__all {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.7em;
+}
+.card__container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  background: #343e63;
+  height: 100%;
+  width: 100%;
+  padding: 1em 0.2em;
+  border-radius: 2em;
+  cursor: pointer;
+}
+.card__section {
+  width: 100%;
+  font-size: 0.9em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.card__image {
+  position: absolute;
+  top: -2em;
+  width: 6em;
+  height: 6em;
+  object-fit: contain;
+}
+.card__info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.card__types {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.card__back {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border: 0.2em solid #fff;
+  border-radius: 2em;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: 0.4s ease;
+  transform: rotateY(0deg);
+}
+.card__pokeball {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  border: 0.2em solid #fff;
+  padding: 0.5em;
+  transition: 0.4s ease;
+  box-shadow: 0.1em 0.2em 0.5em #000;
+  overflow: hidden;
+}
+.button:hover {
+  padding: 0;
+}
+.button__button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  position: relative;
+  padding: 0.7em 1.5em;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.button__button::after {
+  content: "";
+  position: absolute;
+  top: -1.3em;
+  left: -1.3em;
+  border: 0.3em solid #fff;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  transform: rotate(135deg);
+}
+.button__button::before {
+  content: "";
+  position: absolute;
+  bottom: -1.3em;
+  right: -1.3em;
+  border: 0.3em solid #000;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  transform: rotate(135deg);
+}
+.button__button:hover {
+  background: #fff;
+  color: #000;
+}
+.button__button:hover::before {
+  background: #000;
+}
+.button__span {
+  font-size: 1.3em;
+  letter-spacing: 0.05em;
+}
+
+.text {
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.text__h2 {
+  text-transform: capitalize;
+  font-size: inherit;
+  font-weight: bold;
+  color: #f7f6f6;
+}
+
+.span__subtitle {
+  font-size: 0.7em;
+}
+.span__text {
+  font-size: 0.9em;
 }
 
 /*# sourceMappingURL=main.css.map */

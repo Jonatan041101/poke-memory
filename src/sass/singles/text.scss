@@ -1,0 +1,13 @@
+.text {
+	text-align: center;
+	@include flex(column, nowrap, center, center, 0.2em);
+	font-weight: 600;
+	text-transform: capitalize;
+	&__h2 {
+		text-transform: capitalize;
+		font-size: inherit;
+		// letter-spacing: 0.05em;
+		font-weight: bold;
+		color: $color-gentle;
+	}
+}
