@@ -236,7 +236,6 @@ select:focus {
   align-items: center;
   gap: 0;
   min-height: 100vh;
-  background: red;
 }
 
 .card {
@@ -261,13 +260,11 @@ select:focus {
   gap: 1em;
 }
 .card__movements {
-  background: blue;
   min-height: 100vh;
   flex-grow: 1;
   min-width: 16em;
 }
 .card__buttons {
-  background: gray;
   min-height: 100vh;
   flex-grow: 1;
   min-width: 16em;
@@ -284,15 +281,15 @@ select:focus {
 .card__perspective {
   perspective: 500px;
 }
-.card__perspective:hover .card__flip {
-  transform: rotateY(180deg);
-}
 .card__flip {
   position: relative;
   transform-style: preserve-3d;
   width: 8em;
   height: 10em;
   transition: 0.4s ease;
+}
+.card__click {
+  transform: rotateY(180deg);
 }
 .card__container {
   display: flex;
@@ -348,6 +345,7 @@ select:focus {
   backface-visibility: hidden;
   transition: 0.4s ease;
   transform: rotateY(0deg);
+  cursor: pointer;
 }
 .card__pokeball {
   object-fit: contain;
@@ -437,13 +435,13 @@ select:focus {
 }
 
 .title {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
   padding: 0.5em 0;
   font-weight: bold;
+  text-transform: capitalize;
 }
 .title__flex {
-  background: rebeccapurple;
   min-width: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -451,8 +449,49 @@ select:focus {
   align-items: center;
   gap: 0.5em;
 }
-.title__image {
-  align-self: flex-end;
+.title__imageT {
+  position: relative;
+  width: 1.2em;
+  height: 100%;
+}
+.title__img {
+  position: absolute;
+  top: -0.719em;
+}
+
+.historial {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 14px;
+}
+.historial__article {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5em;
+  padding: 0.3em;
+  background: rgba(51, 85, 51, 0.2);
+  border-radius: 0.2em;
+}
+.historial__images {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0em;
+}
+.historial__icon {
+  height: 7em;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
 }
 
 /*# sourceMappingURL=main.css.map */

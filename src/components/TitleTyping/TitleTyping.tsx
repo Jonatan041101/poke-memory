@@ -15,12 +15,15 @@ export default function TitleTyping({ text, image }: Props) {
 		<div className="title__flex">
 			<h2 className="title">{typing}</h2>
 			{imageT.length > 0 && (
-				<Image
-					src={imageT}
-					alt="Imagen que representa parte del titulo."
-					width={25}
-					height={25}
-				/>
+				<div className="title__imageT">
+					<Image
+						src={imageT}
+						alt="Imagen que representa parte del titulo."
+						width={25}
+						height={25}
+						className="title__img"
+					/>
+				</div>
 			)}
 		</div>
 	);

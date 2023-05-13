@@ -11,13 +11,13 @@
 		@include flex(row, nowrap, center, center, 1em);
 	}
 	&__movements {
-		background: blue;
+		// background: blue;
 		min-height: 100vh;
 		flex-grow: 1;
 		min-width: 16em;
 	}
 	&__buttons {
-		background: gray;
+		// background: gray;
 		min-height: 100vh;
 		flex-grow: 1;
 		min-width: 16em;
@@ -27,12 +27,15 @@
 		flex-grow: 1;
 		max-width: 1200px;
 	}
+	// Container de cada card
 	&__perspective {
 		perspective: 500px;
-		&:hover .card__flip {
-			transform: rotateY(180deg);
-		}
+		//Efecto de volteo de la card si lo colocamos dentro del mismo flip trae problemas porque css no puede distinguir si esta o no dentro de flip pero como perspective es toda la card que esta enciam de flip no hay errores
+		// &:hover .card__flip {
+		// 	transform: rotateY(180deg);
+		// }
 	}
+	// Subcontainer de cada card
 	&__flip {
 		position: relative;
 		transform-style: preserve-3d;
@@ -40,7 +43,11 @@
 		height: 10em;
 		transition: 0.4s ease;
 	}
-
+	// Effecto con el click aqui no hay problemas porque solo se aplicaria si hicieramos click
+	&__click {
+		transform: rotateY(180deg);
+	}
+	// Face Front card
 	&__container {
 		@include flex(column, nowrap, flex-end, center, 0);
 		position: relative;
@@ -69,6 +76,7 @@
 	&__types {
 		@include flex(row, nowrap, center, center, 0.3em);
 	}
+	// Face Back card
 	&__back {
 		width: 100%;
 		height: 100%;
@@ -79,6 +87,7 @@
 		backface-visibility: hidden;
 		transition: 0.4s ease;
 		transform: rotateY(0deg);
+		cursor: pointer;
 	}
 	&__pokeball {
 		object-fit: contain;

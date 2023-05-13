@@ -1,0 +1,19 @@
+.historial {
+	@include flex(column, nowrap, center, center, 0.5em);
+	font-size: 14px;
+	&__article {
+		@include flex(row, nowrap, center, flex-start, 0.5em);
+		padding: 0.3em;
+		background: #3533;
+		border-radius: 0.2em;
+	}
+	&__images {
+		@include flex(column, nowrap, center, center, 0em);
+	}
+	&__icon {
+		// background: red;
+		height: 7em;
+		color: #fff;
+		@include flex(column, nowrap, center, center, 0.5em);
+	}
+}

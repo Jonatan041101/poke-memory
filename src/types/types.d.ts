@@ -234,4 +234,4 @@ export interface GameOver {
 	message: string;
 	results: boolean;
 }
-export type IconsTypes = 'Flip' | 'AddCards';
+export type IconsTypes = 'Flip' | 'AddCards' | 'Nice' | 'Bad';
