@@ -6,6 +6,27 @@
 	backface-visibility: hidden;
 	transition: 0.4s ease;
 	transform: rotateY(180deg);
+	&__row {
+		width: 100vw;
+		@include flex(row, nowrap, center, center, 1em);
+	}
+	&__movements {
+		background: blue;
+		min-height: 100vh;
+		flex-grow: 1;
+		min-width: 16em;
+	}
+	&__buttons {
+		background: gray;
+		min-height: 100vh;
+		flex-grow: 1;
+		min-width: 16em;
+	}
+	&__all {
+		@include flex(row, wrap, center, center, 1.7em);
+		flex-grow: 1;
+		max-width: 1200px;
+	}
 	&__perspective {
 		perspective: 500px;
 		&:hover .card__flip {
@@ -19,9 +40,7 @@
 		height: 10em;
 		transition: 0.4s ease;
 	}
-	&__all {
-		@include flex(row, wrap, center, center, 1.7em);
-	}
+
 	&__container {
 		@include flex(column, nowrap, flex-end, center, 0);
 		position: relative;
