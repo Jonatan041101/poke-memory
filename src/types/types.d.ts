@@ -234,4 +234,10 @@ export interface GameOver {
 	message: string;
 	results: boolean;
 }
-export type IconsTypes = 'Flip' | 'AddCards' | 'Nice' | 'Bad';
+export type IconsTypes = 'Flip' | 'AddCards' | 'Nice' | 'Bad' | 'Play';
+export type Change = React.ChangeEvent<HTMLInputElement>;
+export type Form = React.FormEvent<HTMLFormElement>;
+export interface Btn {
+	text: string;
+	icon?: IconsTypes;
+}

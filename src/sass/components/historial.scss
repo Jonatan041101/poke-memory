@@ -1,14 +1,24 @@
 .historial {
-	@include flex(column, nowrap, center, center, 0.5em);
+	@include flex(column, nowrap, flex-start, center, 0.5em);
+	margin: 0.2em;
 	font-size: 14px;
+	height: $height-config;
+	overflow: auto;
 	&__article {
-		@include flex(row, nowrap, center, flex-start, 0.5em);
+		@include flex(column, nowrap, center, center, 0);
 		padding: 0.3em;
+		width: 100%;
 		background: #3533;
 		border-radius: 0.2em;
 	}
 	&__images {
 		@include flex(column, nowrap, center, center, 0em);
+		width: 5.6em;
+		height: 6.5em;
+	}
+	&__container {
+		@include flex(row, nowrap, space-evenly, center, 0.5em);
+		width: 100%;
 	}
 	&__icon {
 		// background: red;

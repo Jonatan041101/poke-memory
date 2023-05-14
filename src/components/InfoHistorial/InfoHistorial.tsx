@@ -15,17 +15,19 @@ export default function InfoHistorial({ historial }: Props) {
 			<div className="historial__overflow">
 				<TitleTyping text={historial.time.toLocaleTimeString()} />
 			</div>
-			<ImageHistorial
-				image={historial.first?.image ?? ''}
-				name={historial.first?.name ?? ''}
-			/>
-			<div className="historial__icon">
-				{historial.assert ? <Icon nameIcon="Nice" /> : <Icon nameIcon="Bad" />}
+			<div className="historial__container">
+				<ImageHistorial
+					image={historial.first?.image ?? ''}
+					name={historial.first?.name ?? ''}
+				/>
+				<div className="historial__icon">
+					{historial.assert ? <Icon nameIcon="Nice" /> : <Icon nameIcon="Bad" />}
+				</div>
+				<ImageHistorial
+					image={historial.second?.image ?? ''}
+					name={historial.second?.name ?? ''}
+				/>
 			</div>
-			<ImageHistorial
-				image={historial.second?.image ?? ''}
-				name={historial.second?.name ?? ''}
-			/>
 		</div>
 	);
 }

@@ -24,8 +24,14 @@
 	}
 	&__all {
 		@include flex(row, wrap, center, center, 1.7em);
+		align-content: center;
 		flex-grow: 1;
 		max-width: 1200px;
+		position: relative;
+		background: #33553333;
+		padding: 2em 0.5em;
+		height: $height-config;
+		border-radius: 0.5em;
 	}
 	// Container de cada card
 	&__perspective {

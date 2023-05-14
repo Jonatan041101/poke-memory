@@ -38,13 +38,21 @@ export default function FrontCard({ pokemon }: Props) {
 				<section className="card__section">
 					<TitlePokemon name={pokemon.name} types={pokemon.types} />
 					<InfoPoke>
-						{allWH.map((pokemon) => (
-							<TextInfo name={pokemon[0]} info={pokemon[1]} />
+						{allWH.map((pokemon, index) => (
+							<TextInfo
+								key={`${JSON.stringify(pokemon)}-${index}`}
+								name={pokemon[0]}
+								info={pokemon[1]}
+							/>
 						))}
 					</InfoPoke>
 					<InfoPoke>
-						{allStats.map(({ info, name }) => (
-							<TextInfo name={name} info={info} />
+						{allStats.map(({ info, name }, index) => (
+							<TextInfo
+								key={`${JSON.stringify(info)}-${index}`}
+								name={name}
+								info={info}
+							/>
 						))}
 					</InfoPoke>
 				</section>

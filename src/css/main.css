@@ -275,8 +275,14 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 1.7em;
+  align-content: center;
   flex-grow: 1;
   max-width: 1200px;
+  position: relative;
+  background: rgba(51, 85, 51, 0.2);
+  padding: 2em 0.5em;
+  height: calc(100vh - 43px);
+  border-radius: 0.5em;
 }
 .card__perspective {
   perspective: 500px;
@@ -462,18 +468,22 @@ select:focus {
 .historial {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 0.5em;
+  margin: 0.2em;
   font-size: 14px;
+  height: calc(100vh - 43px);
+  overflow: auto;
 }
 .historial__article {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
-  align-items: flex-start;
-  gap: 0.5em;
+  align-items: center;
+  gap: 0;
   padding: 0.3em;
+  width: 100%;
   background: rgba(51, 85, 51, 0.2);
   border-radius: 0.2em;
 }
@@ -483,6 +493,16 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0em;
+  width: 5.6em;
+  height: 6.5em;
+}
+.historial__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
 }
 .historial__icon {
   height: 7em;
@@ -492,6 +512,148 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0.5em;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.modal {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  backdrop-filter: blur(1em);
+}
+.modal__section {
+  width: 25em;
+  height: 18em;
+  background: #000;
+  border-radius: 1em;
+  border: 0.2em solid #fff;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.modal__dificulty {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.dificulty {
+  overflow: hidden;
+  width: 5em;
+}
+.dificulty__button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  background: transparent;
+  padding: 0.4em;
+  border: 0.1em solid #fff;
+  font-size: 1.1em;
+  width: 100%;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+.dificulty__button:hover {
+  background: #fff;
+  color: #000;
+}
+.dificulty__button::after {
+  content: "";
+  position: absolute;
+  top: -0.6em;
+  left: -0.5em;
+  width: 1em;
+  height: 1em;
+  border-right: 0.1em solid #fff;
+  background: #000;
+  transform: rotate(45deg);
+}
+.dificulty__button::before {
+  content: "";
+  position: absolute;
+  bottom: -0.5em;
+  right: -0.5em;
+  width: 1em;
+  height: 1em;
+  border-left: 0.1em solid #fff;
+  background: #000;
+  transform: rotate(45deg);
+}
+
+.user {
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+.user__label {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.user__input {
+  border-bottom: 0.1em solid #fff;
+  outline: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  fill-opacity: 0.75;
+  stroke: #000;
+  stroke-width: 10;
+  transform: translate(5px, 5px);
+}
+.circle__color {
+  stroke: #fff;
+  stroke-dasharray: 314.2857142857;
+  transition: 1s linear;
+}
+
+.counter {
+  position: relative;
+  width: 110px;
+  height: 110px;
+}
+.counter__div {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 /*# sourceMappingURL=main.css.map */

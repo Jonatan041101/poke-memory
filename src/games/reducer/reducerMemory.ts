@@ -1,3 +1,4 @@
+import { NameDificulty } from '@/types/enums';
 import { ActionMemory, GamesMemory, Historial } from '../types/types';
 
 export default function reducerMemory(
@@ -5,6 +6,13 @@ export default function reducerMemory(
 	action: ActionMemory,
 ) {
 	switch (action.type) {
+		case 'memory/play': {
+			return {
+				...state,
+				playGame: action.payload.inPlay,
+				nickUser: action.payload.name,
+			};
+		}
 		case 'memory/add':
 			if (state.cacheHistorialOne) {
 				return {
@@ -44,8 +52,35 @@ export default function reducerMemory(
 				cacheHistorialTwo: null,
 			};
 		}
+		case 'memory/change-dificulty': {
+			if (action.payload === NameDificulty.easy) {
+				return {
+					...state,
+					countCardsMix: 8,
+				};
+			}
+			if (action.payload === NameDificulty.medium) {
+				return {
+					...state,
+					countCardsMix: 12,
+				};
+			}
+			if (action.payload === NameDificulty.pro) {
+				return {
+					...state,
+					countCardsMix: 14,
+				};
+			}
+			return state;
+		}
+		case 'memory/gameover-result': {
+			return {
+				...state,
+				gameOver: true,
+				win: action.payload,
+			};
+		}
 		default:
 			return state;
 	}
-	return state;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { terminal } from '@/utils/image-cloudinary';
 import TitleTyping from '../TitleTyping/TitleTyping';
 import { Historial } from '@/games/types/types';
@@ -10,12 +10,18 @@ type Props = {
 
 const title = 'Movimientos realizados';
 export default function Movements({ historial }: Props) {
+	const scrollRef = useRef<HTMLDivElement | null>(null);
+	useEffect(() => {
+		if (scrollRef.current !== null) {
+			scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+		}
+	}, [historial]);
 	return (
 		<div className="card__movements">
 			<TitleTyping text={title} image={terminal} />
-			<section className="historial">
+			<section className="historial" ref={scrollRef}>
 				{historial.map((info, index) => (
-					<CardHistorial key={index} info={info} />
+					<CardHistorial key={`${JSON.stringify(info)}-${index}`} info={info} />
 				))}
 			</section>
 		</div>

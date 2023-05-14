@@ -12,6 +12,7 @@ export default function ImageHistorial({ image, name }: Props) {
 		<div className="historial__images">
 			<TitleTyping text={name} />
 			<Image
+				className="image"
 				src={image ?? ''}
 				alt="Pokemon seleccionado anteriormente"
 				height={50}

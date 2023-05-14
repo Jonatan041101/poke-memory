@@ -12,7 +12,7 @@ export default function useTyping(text: string, image?: string) {
 			} else {
 				setImageT(() => (image ? image : ''));
 			}
-		}, 200);
+		}, 60);
 		return () => clearTimeout(idTime);
 	}, [typing]);
 	return { typing, imageT };

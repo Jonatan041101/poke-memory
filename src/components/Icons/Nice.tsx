@@ -5,8 +5,8 @@ export default function Nice() {
 		<svg
 			version="1.0"
 			xmlns="http://www.w3.org/2000/svg"
-			width="30"
-			height="30"
+			width="16"
+			height="16"
 			viewBox="0 0 512.000000 512.000000"
 		>
 			<g
