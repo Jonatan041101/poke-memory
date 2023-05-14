@@ -6,6 +6,7 @@ import FrontCard from '../FrontCard/FrontCard';
 type Props = {
 	pokemonAssert: number[];
 	pokemonInCache: number[];
+	pokemonFlip: number[];
 	index: number;
 	pokemon: Pokemon;
 	handleAddCachePokemon: (index: number, pokemon: Pokemon) => void;
@@ -16,6 +17,7 @@ export default function Card({
 	pokemon,
 	pokemonInCache,
 	pokemonAssert,
+	pokemonFlip,
 	handleAddCachePokemon,
 }: Props) {
 	return (
@@ -25,7 +27,9 @@ export default function Card({
 		>
 			<div
 				className={`card__flip ${
-					pokemonInCache.includes(index) || pokemonAssert.includes(index)
+					pokemonInCache.includes(index) ||
+					pokemonAssert.includes(index) ||
+					pokemonFlip.includes(index)
 						? 'card__click'
 						: ''
 				}`}

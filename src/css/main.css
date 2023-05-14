@@ -361,7 +361,7 @@ select:focus {
 
 .button {
   border: 0.2em solid #fff;
-  padding: 0.5em;
+  padding: 0.1em;
   transition: 0.4s ease;
   box-shadow: 0.1em 0.2em 0.5em #000;
   overflow: hidden;
@@ -372,11 +372,12 @@ select:focus {
 .button__button {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 0.3em;
   position: relative;
-  padding: 0.7em 1.5em;
+  padding: 0.5em;
+  width: 190px;
   background: transparent;
   color: #fff;
   cursor: pointer;
@@ -415,6 +416,20 @@ select:focus {
   font-size: 1.3em;
   letter-spacing: 0.05em;
 }
+.button__i span {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.button__pause {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
 
 .text {
   text-align: center;
@@ -448,7 +463,6 @@ select:focus {
   text-transform: capitalize;
 }
 .title__flex {
-  min-width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -474,7 +488,17 @@ select:focus {
   margin: 0.2em;
   font-size: 14px;
   height: calc(100vh - 43px);
+  background: rgba(51, 85, 51, 0.2);
+  border-radius: 1em;
   overflow: auto;
+}
+.historial__cero {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
 }
 .historial__article {
   display: flex;
@@ -602,9 +626,10 @@ select:focus {
 }
 
 .user {
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: bold;
   letter-spacing: 0.05em;
+  height: 2em;
 }
 .user__label {
   display: flex;
@@ -616,7 +641,8 @@ select:focus {
 .user__input {
   border-bottom: 0.1em solid #fff;
   outline: none;
-  font-size: 0.9em;
+  font-size: 1em;
+  padding: 0.4em;
   font-weight: bold;
   letter-spacing: 0.05em;
   text-transform: capitalize;
@@ -654,6 +680,27 @@ select:focus {
   gap: 0;
   font-weight: bold;
   font-size: 2em;
+}
+
+.buttons {
+  height: calc(100vh - 43px);
+  background: rgba(51, 85, 51, 0.2);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  padding: 1em 0;
+  border-radius: 1em;
+}
+
+.puntaje {
+  width: 18em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.2em;
 }
 
 /*# sourceMappingURL=main.css.map */

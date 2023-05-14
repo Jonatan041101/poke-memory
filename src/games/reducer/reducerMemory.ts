@@ -1,5 +1,27 @@
 import { NameDificulty } from '@/types/enums';
-import { ActionMemory, GamesMemory, Historial } from '../types/types';
+import {
+	ActionMemory,
+	GamesMemory,
+	Historial,
+	PokemonIndex,
+} from '../types/types';
+import { MEMORY_STATE } from '../states/stateMemory';
+
+const searchPokemonRandom = (pokemons: PokemonIndex[]) => {
+	const randomPokemon = Math.floor(Math.random() * pokemons.length);
+	const idsCard: number[] = [];
+
+	pokemons.forEach((pokemon) => {
+		if (pokemons[randomPokemon].name === pokemon.name) {
+			idsCard.push(pokemon.index);
+		}
+	});
+	if (idsCard.length === 2) {
+		return idsCard;
+	}
+
+	return undefined;
+};
 
 export default function reducerMemory(
 	state: GamesMemory,
@@ -11,6 +33,41 @@ export default function reducerMemory(
 				...state,
 				playGame: action.payload.inPlay,
 				nickUser: action.payload.name,
+				pause: false,
+				refresh: false,
+			};
+		}
+		case 'memory/doble-card': {
+			const allIndex = [...state.assertPokemon, ...state.cachePokemon];
+
+			const resultsPokemonsDontFlip = action.payload.filter(
+				({ index }) => !allIndex.includes(index),
+			);
+
+			let results = searchPokemonRandom(resultsPokemonsDontFlip);
+			while (results === undefined) {
+				results = searchPokemonRandom(resultsPokemonsDontFlip);
+			}
+			return {
+				...state,
+				assertPokemon: [...state.assertPokemon, ...results],
+				countPowerTwoCards: state.countAdd - 3,
+			};
+		}
+
+		case 'memory/flip': {
+			return {
+				...state,
+				powerFlipPokemon: Array.from(
+					{ length: state.countCardsMix * 2 },
+					(_, i) => i,
+				),
+			};
+		}
+		case 'memory/flip-off': {
+			return {
+				...state,
+				powerFlipPokemon: [],
 			};
 		}
 		case 'memory/add':
@@ -19,6 +76,7 @@ export default function reducerMemory(
 					...state,
 					cachePokemon: [...state.cachePokemon, action.payload.index],
 					cacheHistorialTwo: action.payload.historial,
+					countClicks: state.countClicks + 1,
 				};
 			}
 			return {
@@ -42,6 +100,7 @@ export default function reducerMemory(
 					historial: [...state.historial, addHistorial],
 					cacheHistorialOne: null,
 					cacheHistorialTwo: null,
+					countAsserts: state.countAsserts + 1,
 				};
 			}
 			return {
@@ -78,6 +137,19 @@ export default function reducerMemory(
 				...state,
 				gameOver: true,
 				win: action.payload,
+				pause: true,
+			};
+		}
+		case 'memory/pause': {
+			return {
+				...state,
+				pause: action.payload,
+			};
+		}
+		case 'memory/reset': {
+			return {
+				...MEMORY_STATE,
+				refresh: true,
 			};
 		}
 		default:

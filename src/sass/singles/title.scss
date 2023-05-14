@@ -6,7 +6,6 @@
 	text-transform: capitalize;
 	&__flex {
 		// background: rebeccapurple;
-		min-width: 100%;
 		@include flex(row, nowrap, center, center, 0.5em);
 	}
 	&__imageT {

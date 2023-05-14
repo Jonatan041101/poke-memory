@@ -14,8 +14,8 @@ export default function AddCards() {
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 128 128"
-					width="70"
-					height="70"
+					width="30"
+					height="30"
 				>
 					<path
 						fill="#000"

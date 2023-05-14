@@ -18,7 +18,7 @@ export default function Button({
 			<button className="button__button" onClick={handleClick}>
 				<span className="button__span">{text}</span>
 				{icon && (
-					<i>
+					<i className="button__i">
 						<Icon nameIcon={icon} />
 					</i>
 				)}

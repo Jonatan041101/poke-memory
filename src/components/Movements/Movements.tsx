@@ -20,6 +20,12 @@ export default function Movements({ historial }: Props) {
 		<div className="card__movements">
 			<TitleTyping text={title} image={terminal} />
 			<section className="historial" ref={scrollRef}>
+				{historial.length === 0 && (
+					<div className="historial__cero">
+						{' '}
+						<TitleTyping text="Sin movimientos." />
+					</div>
+				)}
 				{historial.map((info, index) => (
 					<CardHistorial key={`${JSON.stringify(info)}-${index}`} info={info} />
 				))}

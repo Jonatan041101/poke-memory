@@ -9,11 +9,10 @@ import reducerMemory from '@/games/reducer/reducerMemory';
 import Card from '../Card/Card';
 import { comparePokemon } from '@/utils/actionsMemory/actionsMemory';
 import TitleTyping from '../TitleTyping/TitleTyping';
-import Modal from '../Modal/Modal';
 import ModalMemory from '../ModalMemory/ModalMemory';
 import { NameDificulty } from '@/types/enums';
 import { useBearStore } from '@/store/store';
-import ModalPause from '../ModalGameOver/ModalPause';
+import { PokemonIndex } from '@/games/types/types';
 
 interface Props {
 	pokemons: Pokemon[];
@@ -41,7 +40,11 @@ export default function Memory({ pokemons }: Props) {
 			);
 			return () => clearTimeout(idTime);
 		}
-	}, [state.cachePokemon, state.assertPokemon]);
+		if (state.powerFlipPokemon.length > 0) {
+			const idTime = setTimeout(() => dispatch({ type: 'memory/flip-off' }), 500);
+			return () => clearTimeout(idTime);
+		}
+	}, [state.cachePokemon, state.assertPokemon, state.powerFlipPokemon]);
 	const handleAddCachePokemon = (index: number, pokemon: Pokemon) => {
 		if (
 			state.cachePokemon.includes(index) ||
@@ -66,36 +69,64 @@ export default function Memory({ pokemons }: Props) {
 	const handleChangeDificulty = (dificulty: NameDificulty) => {
 		dispatch({ type: 'memory/change-dificulty', payload: dificulty });
 	};
-	const handlePlayGame = () => {
+	const handlePlayGame = (play: boolean) => {
 		if (userName.length > 1) {
 			dispatch({
 				type: 'memory/play',
 				payload: {
-					inPlay: true,
+					inPlay: play,
 					name: userName,
 				},
 			});
 		}
 	};
+	const handlePauseGame = () => {
+		dispatch({ type: 'memory/pause', payload: true });
+	};
+	const handlePowerAddToCards = () => {
+		if (state.countAdd % 3 >= 1) {
+		}
+		const pokemonsIndex: PokemonIndex[] = poke.map(({ name }, index) => ({
+			name,
+			index,
+		}));
+
+		dispatch({ type: 'memory/doble-card', payload: pokemonsIndex });
+	};
+	const handlePowerFlipAll = () => {
+		dispatch({ type: 'memory/flip' });
+	};
+	const handleReset = (reset: boolean) => {
+		dispatch({ type: 'memory/reset', payload: reset });
+	};
+	console.log({ state });
+
 	return (
 		<div className="card__row">
 			<Movements historial={state.historial} />
 			<div className="">
 				<TitleTyping text="Juego de Memoria Pokemon" />
 				<section className="card__all">
-					{!state.playGame && (
+					{state.pause && (
 						<ModalMemory
 							handleChangeDificulty={handleChangeDificulty}
 							handlePlayGame={handlePlayGame}
+							handleReset={handleReset}
+							gameOver={state.gameOver}
+							win={state.win}
+							playInGame={state.playGame}
+							asserts={state.countAsserts}
+							clicks={state.countClicks}
 						/>
 					)}
-					{state.gameOver && <ModalPause />}
+
 					{poke.map((pokemon, index) => (
 						<Card
 							key={`${pokemon.id}-${index}`}
 							handleAddCachePokemon={handleAddCachePokemon}
 							index={index}
 							pokemon={pokemon}
+							pokemonFlip={state.powerFlipPokemon}
 							pokemonInCache={state.cachePokemon}
 							pokemonAssert={state.assertPokemon}
 						/>
@@ -103,10 +134,15 @@ export default function Memory({ pokemons }: Props) {
 				</section>
 			</div>
 			<ButtonsActions
-				time={15}
+				time={60}
+				handlePauseGame={handlePauseGame}
 				gameOver={handleGameOver}
 				endGame={state.gameOver}
 				gameStart={state.playGame}
+				gamePause={state.pause}
+				refresh={state.refresh}
+				handlePowerAddToCards={handlePowerAddToCards}
+				handlePowerFlipAll={handlePowerFlipAll}
 			/>
 		</div>
 	);
