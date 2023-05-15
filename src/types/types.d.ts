@@ -1,3 +1,4 @@
+import { GamesMemory } from '@/games/types/types';
 import { NameDificulty, Nivel } from './enums';
 
 export interface Pokemon {
@@ -241,10 +242,19 @@ export type IconsTypes =
 	| 'Bad'
 	| 'Play'
 	| 'Pause'
-	| 'Refresh';
+	| 'Refresh'
+	| 'Pokeball'
+	| 'Guardar'
+	| 'Cargar'
+	| 'Close';
 export type Change = React.ChangeEvent<HTMLInputElement>;
 export type Form = React.FormEvent<HTMLFormElement>;
 export interface Btn {
 	text: string;
 	icon?: IconsTypes;
+}
+export interface GamesSaved {
+	game: GamesMemory;
+	user: string;
+	date: string;
 }

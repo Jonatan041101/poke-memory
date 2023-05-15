@@ -32,4 +32,10 @@
 		color: #fff;
 		@include flex(column, nowrap, center, center, 0.5em);
 	}
+	&__text {
+		@include flex(column, nowrap, center, center, 0.5em);
+		width: 100%;
+		background: #3533;
+		border-radius: 0.5em;
+	}
 }

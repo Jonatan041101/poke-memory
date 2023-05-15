@@ -7,14 +7,13 @@ type Props = {
 };
 
 export default function Puntaje({ assert, intents }: Props) {
-	console.log({ assert, intents });
-
 	return (
 		<article className="puntaje">
 			<TitleTyping text="Resultados" />
 			<TitleTyping text={`Intentos: ${intents}`} />
 			<TitleTyping text={`Aciertos: ${assert}`} />
-			<TitleTyping text={`Puntaje: ${(100 * assert) / intents}`} />
+			<TitleTyping text={`Puntaje: 0`} />
 		</article>
 	);
 }
+// ${(100 * assert) / intents  } Iba en puntaje

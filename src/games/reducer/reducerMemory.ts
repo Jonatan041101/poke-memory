@@ -51,7 +51,8 @@ export default function reducerMemory(
 			return {
 				...state,
 				assertPokemon: [...state.assertPokemon, ...results],
-				countPowerTwoCards: state.countAdd - 3,
+				countAdd: state.countAdd - 3,
+				historial: [...state.historial, 'Habilidad Doble Carta'],
 			};
 		}
 
@@ -62,6 +63,7 @@ export default function reducerMemory(
 					{ length: state.countCardsMix * 2 },
 					(_, i) => i,
 				),
+				historial: [...state.historial, 'Habilidad de Voltear'],
 			};
 		}
 		case 'memory/flip-off': {
@@ -83,16 +85,18 @@ export default function reducerMemory(
 				...state,
 				cachePokemon: [...state.cachePokemon, action.payload.index],
 				cacheHistorialOne: action.payload.historial,
+				prevHit: Date.now(),
 			};
 		case 'memory/compare': {
 			const addHistorial: Historial = {
 				assert: action.payload,
 				first: state.cacheHistorialOne,
 				second: state.cacheHistorialTwo,
-				time: new Date(),
+				time: new Date().toLocaleTimeString(),
 			};
-			if (action.payload) {
+			if (action.payload && state.prevHit) {
 				const saveCache = [...state.cachePokemon];
+				console.log(state.prevHit + 5000, Date.now());
 				return {
 					...state,
 					assertPokemon: [...state.assertPokemon, ...saveCache],
@@ -101,6 +105,8 @@ export default function reducerMemory(
 					cacheHistorialOne: null,
 					cacheHistorialTwo: null,
 					countAsserts: state.countAsserts + 1,
+					hit: state.prevHit + 5000 >= Date.now(),
+					prevHit: null,
 				};
 			}
 			return {
@@ -109,6 +115,13 @@ export default function reducerMemory(
 				historial: [...state.historial, addHistorial],
 				cacheHistorialOne: null,
 				cacheHistorialTwo: null,
+				prevHit: null,
+			};
+		}
+		case 'memory/hit-off': {
+			return {
+				...state,
+				hit: false,
 			};
 		}
 		case 'memory/change-dificulty': {
@@ -135,7 +148,7 @@ export default function reducerMemory(
 		case 'memory/gameover-result': {
 			return {
 				...state,
-				gameOver: true,
+				gameOver: state.refresh ? false : true,
 				win: action.payload,
 				pause: true,
 			};
@@ -150,6 +163,18 @@ export default function reducerMemory(
 			return {
 				...MEMORY_STATE,
 				refresh: true,
+			};
+		}
+		case 'memory/load': {
+			return {
+				...action.payload,
+			};
+		}
+		case 'memory/modal-load': {
+			return {
+				...state,
+				load: action.payload,
+				pause: action.payload,
 			};
 		}
 		default:

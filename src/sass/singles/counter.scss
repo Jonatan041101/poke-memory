@@ -11,4 +11,9 @@
 		font-weight: bold;
 		font-size: 2em;
 	}
+	&__buttons {
+		flex-grow: 1;
+		@include flex(column, nowrap, space-between, center, 0);
+		height: calc(100% - 9.875em);
+	}
 }

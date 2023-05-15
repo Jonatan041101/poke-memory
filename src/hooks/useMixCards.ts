@@ -15,26 +15,31 @@ export default function useMixCards(
 	countPokemons: number = 8,
 	restart: boolean,
 	pokemon: Pokemon[],
+	pokemonStorage: Pokemon[] | null,
 ) {
 	const [poke, setPoke] = useState<Pokemon[]>([]);
 	const cache: Cache = {};
 	const pokemons: Pokemon[] = [];
 	useEffect(() => {
-		const pokemonRandoms = () => {
-			while (countPokemons > pokemons.length) {
-				const numberRandom = Math.floor(Math.random() * pokemon.length);
-				const poke = pokemon[numberRandom];
-				if (!cache[numberRandom]) {
-					pokemons.push(poke);
+		if (pokemonStorage) {
+			setPoke(pokemonStorage);
+		} else {
+			const pokemonRandoms = () => {
+				while (countPokemons > pokemons.length) {
+					const numberRandom = Math.floor(Math.random() * pokemon.length);
+					const poke = pokemon[numberRandom];
+					if (!cache[numberRandom]) {
+						pokemons.push(poke);
+					}
+					cache[numberRandom] = numberRandom;
 				}
-				cache[numberRandom] = numberRandom;
-			}
-		};
-		pokemonRandoms();
-		const pokeShufle = [...pokemons, ...pokemons];
+			};
+			pokemonRandoms();
+			const pokeShufle = [...pokemons, ...pokemons];
 
-		setPoke(shuffle<Pokemon>(pokeShufle));
-	}, [countPokemons, restart]);
+			setPoke(shuffle<Pokemon>(pokeShufle));
+		}
+	}, [countPokemons, restart, pokemonStorage]);
 
 	return {
 		poke,

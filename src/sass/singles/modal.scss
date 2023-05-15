@@ -8,6 +8,7 @@
 	@include flex(column, nowrap, center, center, 0);
 	backdrop-filter: blur(1em);
 	&__section {
+		position: relative;
 		width: 25em;
 		height: 18em;
 		background: #000;
@@ -18,5 +19,18 @@
 	}
 	&__dificulty {
 		@include flex(row, nowrap, center, center, 0.5em);
+	}
+	&__loads {
+		z-index: 30;
+		padding: 2em 1em;
+	}
+	&__close {
+		cursor: pointer;
+		position: absolute;
+		top: 0.2em;
+		right: -0.25em;
+		&:hover {
+			color: #aa2e2e;
+		}
 	}
 }

@@ -8,8 +8,12 @@ export interface PropsCounter {
 	endGame: boolean;
 	gamePause: boolean;
 	refresh: boolean;
+	timeStorage: number | null;
+	hit: boolean;
 	gameOver: (win: boolean) => void;
 	handlePauseGame: () => void;
+	handleModalLoad: () => void;
+	handleSave: (counter: number) => void;
 }
 interface Props extends PropsCounter {
 	handlePowerAddToCards: () => void;
@@ -20,32 +24,43 @@ export default function ButtonsActions({
 	handlePauseGame,
 	handlePowerAddToCards,
 	handlePowerFlipAll,
+	handleModalLoad,
+	handleSave,
 	time,
 	endGame,
 	gameStart,
 	gamePause,
 	refresh,
+	hit,
+	timeStorage,
 }: Props) {
 	return (
 		<div className="card__buttons">
-			<TitleTyping text="Buttons Actions" />
+			<TitleTyping text="Opciones" />
 			<div className="buttons">
-				<Counter
-					gameOver={gameOver}
-					time={time}
-					refresh={refresh}
-					endGame={endGame}
-					gameStart={gameStart}
-					gamePause={gamePause}
-				/>
-				<div className="button__pause">
-					<Button icon="Pause" text="Pausa" handleClick={handlePauseGame} />
-					<Button icon="Flip" text="Volteo" handleClick={handlePowerFlipAll} />
-					<Button
-						icon="AddCards"
-						text="Doble carta"
-						handleClick={handlePowerAddToCards}
-					/>
+				<div className="button__pause button__counter">
+					<Counter
+						timeStorage={timeStorage}
+						handleModalLoad={handleModalLoad}
+						handleSave={handleSave}
+						hit={hit}
+						gameOver={gameOver}
+						time={time}
+						refresh={refresh}
+						endGame={endGame}
+						gameStart={gameStart}
+						gamePause={gamePause}
+					>
+						<div className="button__pause">
+							<Button icon="Pause" text="Pausa" handleClick={handlePauseGame} />
+							<Button icon="Flip" text="Volteo" handleClick={handlePowerFlipAll} />
+							<Button
+								icon="AddCards"
+								text="Doble carta"
+								handleClick={handlePowerAddToCards}
+							/>
+						</div>
+					</Counter>
 				</div>
 			</div>
 		</div>

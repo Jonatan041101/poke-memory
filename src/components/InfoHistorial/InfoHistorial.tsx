@@ -13,7 +13,7 @@ export default function InfoHistorial({ historial }: Props) {
 	return (
 		<div className="historial__article">
 			<div className="historial__overflow">
-				<TitleTyping text={historial.time.toLocaleTimeString()} />
+				<TitleTyping text={historial.time} />
 			</div>
 			<div className="historial__container">
 				<ImageHistorial

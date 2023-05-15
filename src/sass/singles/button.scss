@@ -7,6 +7,7 @@
 	&:hover {
 		padding: 0;
 	}
+
 	&__button {
 		@include flex(row, nowrap, space-between, center, 0.3em);
 		position: relative;
@@ -47,6 +48,7 @@
 			}
 		}
 	}
+
 	&__span {
 		font-size: 1.3em;
 		letter-spacing: 0.05em;
@@ -56,5 +58,9 @@
 	}
 	&__pause {
 		@include flex(column, nowrap, center, center, 0.3em);
+	}
+	&__counter {
+		height: 100%;
+		@include flex(column, nowrap, center, center, 1em);
 	}
 }

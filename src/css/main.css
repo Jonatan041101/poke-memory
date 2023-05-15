@@ -19,6 +19,10 @@
   font-family: FuturaLight;
   src: url("../../public/fonts/Futura/FuturaLight.ttf");
 }
+@font-face {
+  font-family: PokemonSolid;
+  src: url("../../public/fonts/PokemonS.ttf");
+}
 /* Definimos las Custom properties */
 :root {
   /* Colores */
@@ -430,6 +434,14 @@ select:focus {
   align-items: center;
   gap: 0.3em;
 }
+.button__counter {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
 
 .text {
   text-align: center;
@@ -537,6 +549,16 @@ select:focus {
   align-items: center;
   gap: 0.5em;
 }
+.historial__text {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  background: rgba(51, 85, 51, 0.2);
+  border-radius: 0.5em;
+}
 
 .image {
   object-fit: contain;
@@ -557,6 +579,7 @@ select:focus {
   backdrop-filter: blur(1em);
 }
 .modal__section {
+  position: relative;
   width: 25em;
   height: 18em;
   background: #000;
@@ -575,6 +598,19 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0.5em;
+}
+.modal__loads {
+  z-index: 30;
+  padding: 2em 1em;
+}
+.modal__close {
+  cursor: pointer;
+  position: absolute;
+  top: 0.2em;
+  right: -0.25em;
+}
+.modal__close:hover {
+  color: #aa2e2e;
 }
 
 .dificulty {
@@ -681,13 +717,22 @@ select:focus {
   font-weight: bold;
   font-size: 2em;
 }
+.counter__buttons {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  height: calc(100% - 9.875em);
+}
 
 .buttons {
   height: calc(100vh - 43px);
   background: rgba(51, 85, 51, 0.2);
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 1em;
   padding: 1em 0;
@@ -701,6 +746,59 @@ select:focus {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 0.2em;
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 25;
+  top: 0;
+  left: 0;
+  font-family: PokemonSolid;
+  letter-spacing: 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.loading__container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.loading__p {
+  font-size: 2em;
+  color: #fff;
+  transition: 0.5s ease;
+}
+.loading__pokeball {
+  color: #fff;
+  border-radius: 50%;
+  animation-name: pokeball;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+  animation-iteration-count: infinite;
+  transition: 0.5s linear;
+  width: 70px;
+  height: 70px;
+}
+.loading__opacity {
+  transform: scale(1.5);
+  opacity: 0;
+}
+
+@keyframes pokeball {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

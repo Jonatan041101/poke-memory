@@ -1,4 +1,5 @@
 import { NameDificulty } from '@/types/enums';
+import { Pokemon } from '@/types/types';
 export interface PokemonIndex {
 	name: string;
 	index: number;
@@ -11,7 +12,7 @@ export interface Historial {
 	first: PokeHistorial | null;
 	assert: boolean;
 	second: PokeHistorial | null;
-	time: Date;
+	time: string;
 }
 interface PayloadAdd {
 	index: number;
@@ -30,6 +31,8 @@ export interface GamesMemory {
 	cachePokemon: number[];
 	assertPokemon: number[];
 	powerFlipPokemon: number[];
+	pokemonStorage: Pokemon[] | null;
+	timeStorage: number | null;
 	cacheHistorialOne: PokeHistorial | null;
 	cacheHistorialTwo: PokeHistorial | null;
 	historial: (Historial | string)[]; //Editar para tambine poner strings para mostrar los dobles hits
@@ -37,8 +40,11 @@ export interface GamesMemory {
 	gameOver: boolean;
 	win: boolean;
 	nickUser: string;
+	prevHit: number | null;
+	hit: boolean;
 	pause: boolean;
 	refresh: boolean;
+	load: boolean;
 }
 type ActionMemory =
 	| { type: 'memory/add'; payload: PayloadAdd }
@@ -50,4 +56,7 @@ type ActionMemory =
 	| { type: 'memory/flip' }
 	| { type: 'memory/flip-off' }
 	| { type: 'memory/doble-card'; payload: PokemonIndex[] }
-	| { type: 'memory/reset'; payload: boolean };
+	| { type: 'memory/reset'; payload: boolean }
+	| { type: 'memory/hit-off' }
+	| { type: 'memory/load'; payload: GamesMemory }
+	| { type: 'memory/modal-load'; payload: boolean };
