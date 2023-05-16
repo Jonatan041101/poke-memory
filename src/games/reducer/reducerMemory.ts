@@ -29,6 +29,8 @@ export default function reducerMemory(
 ) {
 	switch (action.type) {
 		case 'memory/play': {
+			console.log('hola');
+
 			return {
 				...state,
 				playGame: action.payload.inPlay,
@@ -64,6 +66,7 @@ export default function reducerMemory(
 					(_, i) => i,
 				),
 				historial: [...state.historial, 'Habilidad de Voltear'],
+				countFlip: state.countFlip - 1,
 			};
 		}
 		case 'memory/flip-off': {
@@ -96,7 +99,6 @@ export default function reducerMemory(
 			};
 			if (action.payload && state.prevHit) {
 				const saveCache = [...state.cachePokemon];
-				console.log(state.prevHit + 5000, Date.now());
 				return {
 					...state,
 					assertPokemon: [...state.assertPokemon, ...saveCache],
@@ -107,6 +109,7 @@ export default function reducerMemory(
 					countAsserts: state.countAsserts + 1,
 					hit: state.prevHit + 5000 >= Date.now(),
 					prevHit: null,
+					countAdd: state.countAdd + 1,
 				};
 			}
 			return {
@@ -154,9 +157,11 @@ export default function reducerMemory(
 			};
 		}
 		case 'memory/pause': {
+			console.log('holis - pause');
+
 			return {
 				...state,
-				pause: action.payload,
+				pause: true,
 			};
 		}
 		case 'memory/reset': {
@@ -173,7 +178,7 @@ export default function reducerMemory(
 		case 'memory/modal-load': {
 			return {
 				...state,
-				load: action.payload,
+				// load: action.payload,
 				pause: action.payload,
 			};
 		}

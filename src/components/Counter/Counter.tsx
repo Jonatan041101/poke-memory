@@ -36,7 +36,6 @@ export default function Counter({
 	}, [counter, gameStart, endGame, gamePause, refresh]);
 	useEffect(() => {
 		if (hit) {
-			console.log({ hit });
 			setCounter((counter) => counter + 2);
 		}
 	}, [hit]);

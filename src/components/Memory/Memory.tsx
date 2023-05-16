@@ -15,6 +15,7 @@ import { useBearStore } from '@/store/store';
 import { GamesMemory, PokemonIndex } from '@/games/types/types';
 import LoadingHome from '../LoadingHome/LoadingHome';
 import LoadGame from '../LoadGame/LoadGame';
+import AlertModal from '../AlertModal';
 
 interface Props {
 	pokemons: Pokemon[];
@@ -29,7 +30,8 @@ export const parseDates = () => {
 };
 export default function Memory({ pokemons }: Props) {
 	const [state, dispatch] = useReducer(reducerMemory, MEMORY_STATE);
-	const { userName, changeName } = useBearStore((state) => state);
+	const stateStore = useBearStore((state) => state);
+	const { userName, changeName, createNotification } = stateStore;
 	const { poke } = useMixCards(
 		state.countCardsMix,
 		false,
@@ -39,7 +41,6 @@ export default function Memory({ pokemons }: Props) {
 	const handleGameOver = (win: boolean) => {
 		dispatch({ type: 'memory/gameover-result', payload: win });
 	};
-	console.log({ poke, state });
 
 	useEffect(() => {
 		if (state.hit) {
@@ -103,15 +104,15 @@ export default function Memory({ pokemons }: Props) {
 					name: userName,
 				},
 			});
+			return;
 		}
+		createNotification('Agregue un nick de al menos 3 caracteres.', '#910102');
 	};
 	const handlePauseGame = () => {
 		dispatch({ type: 'memory/pause', payload: true });
 	};
 	const handlePowerAddToCards = () => {
-		if (state.countAdd % 3 >= 1) {
-		}
-		if (!state.pause) {
+		if (Math.floor(state.countAdd / 3) >= 1 && !state.pause) {
 			const pokemonsIndex: PokemonIndex[] = poke.map(({ name }, index) => ({
 				name,
 				index,
@@ -121,7 +122,7 @@ export default function Memory({ pokemons }: Props) {
 		}
 	};
 	const handlePowerFlipAll = () => {
-		if (!state.pause) {
+		if (!state.pause && state.countFlip) {
 			dispatch({ type: 'memory/flip' });
 		}
 	};
@@ -129,7 +130,6 @@ export default function Memory({ pokemons }: Props) {
 		dispatch({ type: 'memory/reset', payload: reset });
 	};
 	const handleSave = (counter: number) => {
-		const games = parseDates();
 		const stateStorage: GamesMemory = {
 			...state,
 			pokemonStorage: poke,
@@ -144,20 +144,27 @@ export default function Memory({ pokemons }: Props) {
 			}),
 			user: userName,
 		};
-		window.localStorage.setItem('Jonh', JSON.stringify([...games, gameSave]));
+		console.log({ gameSave });
+
+		window.localStorage.setItem('Jonh', JSON.stringify([gameSave]));
+
+		const notify = 'Juego guardado';
+		createNotification(notify, '#fff');
 	};
-	const modalLoad = (open: boolean) => {
-		dispatch({ type: 'memory/modal-load', payload: open });
-	};
+	// const modalLoad = (open: boolean) => {
+	// 	dispatch({ type: 'memory/modal-load', payload: open });
+	// };
 	const handleModalLoad = () => {
-		modalLoad(true);
+		const games = parseDates();
+		console.log({ games: games[0] });
+		dispatch({ type: 'memory/load', payload: games[0].game });
+		createNotification('Partida cargada', '#fff');
+		changeName(games[0].user);
 	};
-	const handleLoadGame = (game: GamesSaved) => {
-		dispatch({ type: 'memory/load', payload: game.game });
-		changeName(game.user);
-	};
+
 	return (
 		<div className="card__row">
+			<AlertModal />
 			{poke.length > 0 ? (
 				<>
 					<Movements historial={state.historial} />
@@ -174,10 +181,8 @@ export default function Memory({ pokemons }: Props) {
 									playInGame={state.playGame}
 									asserts={state.countAsserts}
 									clicks={state.countClicks}
+									user={state.nickUser}
 								/>
-							)}
-							{state.load && (
-								<LoadGame handleLoadGame={handleLoadGame} modalLoad={modalLoad} />
 							)}
 							{poke.map((pokemon, index) => (
 								<Card
@@ -204,6 +209,8 @@ export default function Memory({ pokemons }: Props) {
 						gamePause={state.pause}
 						refresh={state.refresh}
 						hit={state.hit}
+						countFlip={state.countFlip}
+						countTwo={state.countAdd}
 						handleSave={handleSave}
 						handleModalLoad={handleModalLoad}
 					/>

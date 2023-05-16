@@ -1,0 +1,41 @@
+.notification {
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	z-index: 5;
+	@include flex(column, nowrap, center, center, 0.5em);
+	&__article {
+		background: #000;
+		color: #fff;
+		padding: 0.5em 0.8em;
+		width: 15em;
+		height: 3em;
+		@include flex(column, nowrap, center, center, 0.5em);
+		letter-spacing: 0.1em;
+		border-radius: 0.4em;
+		position: relative;
+		text-align: center;
+		&:hover .notification__load {
+			animation-play-state: paused;
+		}
+	}
+	&__load {
+		background: #fff;
+		height: 0.2em;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		animation-name: load;
+		animation-duration: 2s;
+		animation-fill-mode: backwards;
+		animation-timing-function: ease;
+	}
+}
+@keyframes load {
+	from {
+		width: 100%;
+	}
+	to {
+		width: 0%;
+	}
+}

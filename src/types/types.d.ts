@@ -258,3 +258,4 @@ export interface GamesSaved {
 	user: string;
 	date: string;
 }
+export type ColorsNotification = '#910102' | '#fff' | '#01371d';

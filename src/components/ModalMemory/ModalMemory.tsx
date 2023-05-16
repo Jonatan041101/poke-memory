@@ -15,6 +15,7 @@ interface Props {
 	win: boolean;
 	clicks: number;
 	asserts: number;
+	user: string;
 }
 export default function ModalMemory({
 	handleChangeDificulty,
@@ -25,6 +26,7 @@ export default function ModalMemory({
 	playInGame,
 	asserts,
 	clicks,
+	user,
 }: Props) {
 	return (
 		<Modal>
@@ -32,7 +34,7 @@ export default function ModalMemory({
 				{gameOver && (
 					<article>
 						{win ? (
-							<TitleTyping text="Enhorabuena has ganado" />
+							<TitleTyping text={`Enhorabuena has ganado ${user}`} />
 						) : (
 							<TitleTyping text="Derrota" />
 						)}

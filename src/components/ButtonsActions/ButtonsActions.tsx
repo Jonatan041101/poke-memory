@@ -8,6 +8,7 @@ export interface PropsCounter {
 	endGame: boolean;
 	gamePause: boolean;
 	refresh: boolean;
+
 	timeStorage: number | null;
 	hit: boolean;
 	gameOver: (win: boolean) => void;
@@ -18,6 +19,8 @@ export interface PropsCounter {
 interface Props extends PropsCounter {
 	handlePowerAddToCards: () => void;
 	handlePowerFlipAll: () => void;
+	countFlip: number;
+	countTwo: number;
 }
 export default function ButtonsActions({
 	gameOver,
@@ -33,7 +36,11 @@ export default function ButtonsActions({
 	refresh,
 	hit,
 	timeStorage,
+	countFlip,
+	countTwo,
 }: Props) {
+	const powersAddCard = Math.floor(countTwo / 3);
+
 	return (
 		<div className="card__buttons">
 			<TitleTyping text="Opciones" />
@@ -53,8 +60,14 @@ export default function ButtonsActions({
 					>
 						<div className="button__pause">
 							<Button icon="Pause" text="Pausa" handleClick={handlePauseGame} />
-							<Button icon="Flip" text="Volteo" handleClick={handlePowerFlipAll} />
 							<Button
+								ability={`${countFlip}`}
+								icon="Flip"
+								text="Volteo"
+								handleClick={handlePowerFlipAll}
+							/>
+							<Button
+								ability={`${powersAddCard}`}
 								icon="AddCards"
 								text="Doble carta"
 								handleClick={handlePowerAddToCards}

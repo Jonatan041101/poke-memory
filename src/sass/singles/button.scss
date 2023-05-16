@@ -55,12 +55,24 @@
 	}
 	&__i span {
 		@include flex(row, nowrap, center, center, 0.3em);
+		position: relative;
 	}
 	&__pause {
 		@include flex(column, nowrap, center, center, 0.3em);
 	}
 	&__counter {
 		height: 100%;
+		@include flex(column, nowrap, center, center, 1em);
+	}
+	&__ability {
+		top: 0;
+		right: 0;
+		background: #000;
+		border-radius: 50%;
+		width: 1.2em;
+		height: 1.2em;
+		position: absolute;
+		color: #fff;
 		@include flex(column, nowrap, center, center, 1em);
 	}
 }

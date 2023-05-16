@@ -426,6 +426,7 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0.3em;
+  position: relative;
 }
 .button__pause {
   display: flex;
@@ -436,6 +437,21 @@ select:focus {
 }
 .button__counter {
   height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.button__ability {
+  top: 0;
+  right: 0;
+  background: #000;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  position: absolute;
+  color: #fff;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -611,6 +627,13 @@ select:focus {
 }
 .modal__close:hover {
   color: #aa2e2e;
+}
+.modal__mini {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0;
 }
 
 .dificulty {
@@ -798,6 +821,56 @@ select:focus {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.notification {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  z-index: 5;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.notification__article {
+  background: #000;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  width: 15em;
+  height: 3em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  letter-spacing: 0.1em;
+  border-radius: 0.4em;
+  position: relative;
+  text-align: center;
+}
+.notification__article:hover .notification__load {
+  animation-play-state: paused;
+}
+.notification__load {
+  background: #fff;
+  height: 0.2em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation-name: load;
+  animation-duration: 2s;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease;
+}
+
+@keyframes load {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
   }
 }
 

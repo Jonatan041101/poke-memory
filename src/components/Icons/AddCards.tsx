@@ -3,69 +3,58 @@ import React from 'react';
 export default function AddCards() {
 	return (
 		<svg
-			id="SvgjsSvg1001"
+			version="1.0"
+			xmlns="http://www.w3.org/2000/svg"
 			width="30"
 			height="30"
-			xmlns="http://www.w3.org/2000/svg"
-			version="1.1"
+			viewBox="0 0 56.000000 83.000000"
+			preserveAspectRatio="xMidYMid meet"
 		>
-			<defs id="SvgjsDefs1002"></defs>
-			<g id="SvgjsG1008">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 128 128"
-					width="30"
-					height="30"
-				>
-					<path
-						fill="#000"
-						d="m75 28 8 11 11.71 36.94L80 108v12H55l-1.01-14L42 83l33-55z"
-					></path>
-					<rect
-						width="49"
-						height="64.62"
-						x="23.4"
-						y="17.17"
-						fill="#000"
-						stroke="#fff"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth="4"
-						rx="8"
-						ry="8"
-						transform="rotate(-11.99 47.896 49.508)"
-					></rect>
-					<rect
-						width="49"
-						height="80"
-						x="31"
-						y="14"
-						fill="#fff"
-						stroke="#000"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth="4"
-						rx="8"
-						ry="8"
-						transform="rotate(22.2 55.508 54.005)"
-					></rect>
-					<path
-						fill="#000"
-						stroke="#fff"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth="4"
-						d="M74 96 57.93 72.31a8 8 0 0 1-.16-8.73l1.05-1.69A8 8 0 0 1 72 61.33L86 80"
-					></path>
-					<path
-						fill="none"
-						stroke="#fff"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth="4"
-						d="M86 44.1 95 77l-15 31v10M50 94.96 55 107h14M55 118v-11"
-					></path>
-				</svg>
+			<g
+				transform="translate(0.000000,83.000000) scale(0.100000,-0.100000)"
+				fill="currentColor"
+				stroke="none"
+			>
+				<path
+					d="M213 812 c-6 -4 8 -7 32 -7 24 0 38 3 32 7 -7 4 -21 8 -32 8 -11 0
+-25 -4 -32 -8z"
+				/>
+				<path
+					d="M310 790 c8 -5 20 -10 25 -10 6 0 3 5 -5 10 -8 5 -19 10 -25 10 -5 0
+-3 -5 5 -10z"
+				/>
+				<path
+					d="M178 771 c-9 -11 -42 -23 -81 -31 -103 -19 -105 -25 -74 -170 20 -91
+24 -127 16 -147 -5 -14 -8 -27 -6 -29 2 -2 40 86 84 196 45 110 81 200 80 200
+-2 0 -10 -8 -19 -19z"
+				/>
+				<path
+					d="M430 740 c8 -5 20 -10 25 -10 6 0 3 5 -5 10 -8 5 -19 10 -25 10 -5 0
+-3 -5 5 -10z"
+				/>
+				<path
+					d="M485 718 c28 -15 26 -13 35 -50 8 -31 8 -32 9 -5 1 28 -29 67 -51 67
+-7 0 -4 -6 7 -12z"
+				/>
+				<path d="M506 615 c-9 -26 -7 -32 5 -12 6 10 9 21 6 23 -2 3 -7 -2 -11 -11z" />
+				<path
+					d="M473 535 c-6 -17 -20 -53 -31 -82 l-21 -51 20 -29 c20 -27 20 -27 -6
+2 -15 17 -37 42 -50 58 -13 15 -32 27 -43 27 -23 0 -62 -44 -62 -69 0 -9 20
+-47 45 -84 25 -37 42 -67 38 -67 -5 0 -16 -14 -25 -30 -20 -35 -48 -39 -105
+-15 -45 19 -47 19 -25 -3 9 -11 21 -17 26 -14 5 3 6 -2 3 -12 -4 -10 -3 -15 3
+-11 5 3 12 -6 16 -20 6 -22 12 -25 58 -27 l51 -2 -47 -3 -46 -4 -4 -45 -3 -44
+90 0 91 0 -4 38 c-3 30 8 64 53 159 l57 121 -34 118 c-33 111 -35 116 -45 89z
+m8 -212 c13 -16 12 -17 -3 -4 -17 13 -22 21 -14 21 2 0 10 -8 17 -17z"
+				/>
+				<path d="M27 279 c12 -12 24 -21 27 -18 2 2 -8 13 -22 23 l-27 19 22 -24z" />
+				<path
+					d="M90 245 c14 -8 30 -14 35 -14 6 0 -1 6 -15 14 -14 8 -29 14 -35 14
+-5 0 1 -6 15 -14z"
+				/>
+				<path
+					d="M150 220 c8 -5 20 -10 25 -10 6 0 3 5 -5 10 -8 5 -19 10 -25 10 -5 0
+-3 -5 5 -10z"
+				/>
 			</g>
 		</svg>
 	);

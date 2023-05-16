@@ -1,16 +1,11 @@
 import { Pokemon } from '@/types/types';
 import { create, StateCreator } from 'zustand';
+import { UserGame, userSlice } from './slices/user';
+import { Notification, notificationSlice } from './notifications';
 
-interface MemoryGame {
-	countCardsMix: number;
-}
 interface GamesPokemon {
 	pokemons: Pokemon[];
 	addPokemonToStore: (pokemons: Pokemon[]) => void;
-}
-interface UserGame {
-	userName: string;
-	changeName: (name: string) => void;
 }
 
 const pokemonsSlice: StateCreator<GamesPokemon> = (set) => ({
@@ -21,23 +16,11 @@ const pokemonsSlice: StateCreator<GamesPokemon> = (set) => ({
 	},
 	pokemons: [],
 });
-const memorySlice: StateCreator<MemoryGame> = (set) => ({
-	countCardsMix: 8,
-});
-const userSlice: StateCreator<UserGame> = (set) => ({
-	userName: '',
-	changeName: (name) => {
-		return set((state) => ({
-			...state,
-			userName: name,
-		}));
-	},
-});
 
-export const useBearStore = create<GamesPokemon & MemoryGame & UserGame>()(
+export const useBearStore = create<GamesPokemon & UserGame & Notification>()(
 	(...set) => ({
 		...pokemonsSlice(...set),
-		...memorySlice(...set),
 		...userSlice(...set),
+		...notificationSlice(...set),
 	}),
 );

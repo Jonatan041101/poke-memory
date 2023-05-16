@@ -33,4 +33,7 @@
 			color: #aa2e2e;
 		}
 	}
+	&__mini {
+		@include flex(column, nowrap, flex-end, flex-end, 0);
+	}
 }
