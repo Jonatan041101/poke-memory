@@ -16,6 +16,9 @@
 		border: 0.2em solid #fff;
 		color: #fff;
 		@include flex(column, nowrap, center, center, 1em);
+		@include responsive(500px) {
+			width: 100vw;
+		}
 	}
 	&__dificulty {
 		@include flex(row, nowrap, center, center, 0.5em);

@@ -239,7 +239,6 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0;
-  min-height: 100vh;
 }
 
 .card {
@@ -263,15 +262,50 @@ select:focus {
   align-items: center;
   gap: 1em;
 }
+@media screen and (max-width: 900px) {
+  .card__row {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+}
 .card__movements {
   min-height: 100vh;
   flex-grow: 1;
   min-width: 16em;
 }
+@media screen and (max-width: 1500px) {
+  .card__movements {
+    position: fixed;
+    left: 0;
+    z-index: 35;
+    transform: translateX(-18em);
+    transition: 0.5s ease;
+  }
+}
 .card__buttons {
   min-height: 100vh;
   flex-grow: 1;
   min-width: 16em;
+}
+@media screen and (max-width: 1400px) {
+  .card__buttons {
+    flex-grow: 0;
+    min-width: 10em;
+  }
+}
+@media screen and (max-width: 900px) {
+  .card__buttons {
+    width: 100vw;
+    min-height: 10em;
+  }
+}
+@media screen and (max-width: 900px) {
+  .card__buttons .title__flex {
+    display: none;
+  }
 }
 .card__all {
   display: flex;
@@ -288,6 +322,18 @@ select:focus {
   height: calc(100vh - 43px);
   border-radius: 0.5em;
 }
+@media screen and (max-width: 900px) {
+  .card__all {
+    height: calc(100vh - 43px - 12em);
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .card__all {
+    width: 100vw;
+  }
+}
 .card__perspective {
   perspective: 500px;
 }
@@ -297,6 +343,24 @@ select:focus {
   width: 8em;
   height: 10em;
   transition: 0.4s ease;
+}
+@media screen and (max-width: 1300px) {
+  .card__flip {
+    width: 6.1em;
+    height: 7.1em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .card__flip {
+    width: 5.3em;
+    height: 5.3em;
+  }
+}
+@media screen and (max-width: 580px) {
+  .card__flip {
+    width: 4em;
+    height: 4em;
+  }
 }
 .card__click {
   transform: rotateY(180deg);
@@ -315,6 +379,11 @@ select:focus {
   border-radius: 2em;
   cursor: pointer;
 }
+@media screen and (max-width: 1300px) {
+  .card__container {
+    justify-content: center;
+  }
+}
 .card__section {
   width: 100%;
   font-size: 0.9em;
@@ -324,12 +393,29 @@ select:focus {
   align-items: center;
   gap: 0.3em;
 }
+@media screen and (max-width: 1300px) {
+  .card__section {
+    display: none;
+  }
+}
 .card__image {
   position: absolute;
   top: -2em;
   width: 6em;
   height: 6em;
   object-fit: contain;
+}
+@media screen and (max-width: 1300px) {
+  .card__image {
+    position: relative;
+    top: 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .card__image {
+    width: 120%;
+    height: 120%;
+  }
 }
 .card__info {
   display: flex;
@@ -361,6 +447,7 @@ select:focus {
   object-fit: contain;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
 }
 
 .button {
@@ -372,6 +459,28 @@ select:focus {
 }
 .button:hover {
   padding: 0;
+}
+@media screen and (max-width: 1400px) {
+  .button {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .button {
+    width: 7em;
+    height: 3em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .button {
+    width: 3em;
+    height: 3em;
+  }
 }
 .button__button {
   display: flex;
@@ -416,9 +525,30 @@ select:focus {
 .button__button:hover::before {
   background: #000;
 }
+@media screen and (max-width: 1400px) {
+  .button__button {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .button__button {
+    height: 100%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .button__button {
+    padding: 0;
+    justify-content: center;
+  }
+}
 .button__span {
-  font-size: 1.3em;
   letter-spacing: 0.05em;
+  font-size: clamp(0.7em, 1.4vw, 1em);
+}
+@media screen and (max-width: 650px) {
+  .button__span {
+    display: none;
+  }
 }
 .button__i span {
   display: flex;
@@ -434,6 +564,33 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0.3em;
+  width: 100%;
+}
+@media screen and (max-width: 900px) {
+  .button__pause {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    width: 15em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .button__pause {
+    width: 12em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .button__pause {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    width: 35vw;
+    height: 100%;
+  }
 }
 .button__counter {
   height: 100%;
@@ -442,6 +599,30 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 1em;
+}
+@media screen and (max-width: 900px) {
+  .button__counter {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .button__counter {
+    width: 100vw;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .button__counter {
+    gap: 0.3em;
+  }
 }
 .button__ability {
   top: 0;
@@ -519,6 +700,11 @@ select:focus {
   background: rgba(51, 85, 51, 0.2);
   border-radius: 1em;
   overflow: auto;
+}
+@media screen and (max-width: 1500px) {
+  .historial {
+    background: #000;
+  }
 }
 .historial__cero {
   height: 100%;
@@ -607,6 +793,11 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 1em;
+}
+@media screen and (max-width: 500px) {
+  .modal__section {
+    width: 100vw;
+  }
 }
 .modal__dificulty {
   display: flex;
@@ -721,11 +912,22 @@ select:focus {
   stroke-dasharray: 314.2857142857;
   transition: 1s linear;
 }
+@media screen and (max-width: 650px) {
+  .circle__color {
+    stroke-dasharray: 188.5714285714;
+  }
+}
 
 .counter {
   position: relative;
   width: 110px;
   height: 110px;
+}
+@media screen and (max-width: 650px) {
+  .counter {
+    height: 70px;
+    width: 70px;
+  }
 }
 .counter__div {
   position: absolute;
@@ -749,6 +951,22 @@ select:focus {
   gap: 0;
   height: calc(100% - 9.875em);
 }
+@media screen and (max-width: 900px) {
+  .counter__buttons {
+    height: 8em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    flex-grow: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .counter__buttons {
+    gap: 0.3em;
+  }
+}
 
 .buttons {
   height: calc(100vh - 43px);
@@ -760,6 +978,12 @@ select:focus {
   gap: 1em;
   padding: 1em 0;
   border-radius: 1em;
+}
+@media screen and (max-width: 900px) {
+  .buttons {
+    height: 8em;
+    padding: 0;
+  }
 }
 
 .puntaje {
@@ -872,6 +1096,9 @@ select:focus {
   to {
     width: 0%;
   }
+}
+[data-x=true] {
+  transform: translateX(0);
 }
 
 /*# sourceMappingURL=main.css.map */

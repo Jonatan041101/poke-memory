@@ -4,4 +4,8 @@
 	@include flex(column, nowrap, space-between, center, 1em);
 	padding: 1em 0;
 	border-radius: 1em;
+	@include responsive(900px) {
+		height: 8em;
+		padding: 0;
+	}
 }

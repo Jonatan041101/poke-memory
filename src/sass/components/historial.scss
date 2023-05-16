@@ -6,6 +6,9 @@
 	background: #3533;
 	border-radius: 1em;
 	overflow: auto;
+	@include responsive(1500px) {
+		background: #000;
+	}
 	&__cero {
 		height: 100%;
 		@include flex(column, nowrap, center, center, 0);
