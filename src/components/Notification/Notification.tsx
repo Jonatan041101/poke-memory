@@ -1,5 +1,5 @@
-import { OneNotify } from '@/store/notifications';
 import { useBearStore } from '@/store/store';
+import { OneNotify } from '@/store/notifications';
 import React from 'react';
 
 interface Props {
