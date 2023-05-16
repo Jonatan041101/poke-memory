@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PropsCounter } from '../ButtonsActions/ButtonsActions';
 import Button from '../Button/Button';
+import { useBearStore } from '@/store/store';
 
 type Props = Omit<PropsCounter, 'handlePauseGame'> & {
 	children: React.ReactNode;
@@ -20,11 +21,17 @@ export default function Counter({
 	children,
 }: Props) {
 	const [counter, setCounter] = useState<number>(timeStorage ?? time);
+	const [res, setRes] = useState<boolean>(false);
+	const { handleOpenTerminal, openTerminal } = useBearStore((state) => state);
 	useEffect(() => {
 		if (refresh) {
 			setCounter(() => time);
 		}
-
+		if (window.outerWidth <= 650) {
+			setRes(true);
+		} else {
+			setRes(false);
+		}
 		if (counter <= 0) {
 			gameOver(false);
 		}
@@ -44,19 +51,24 @@ export default function Counter({
 			setCounter(() => timeStorage);
 		}
 	}, [timeStorage]);
-	const dasharray = (50 * 2 * 22) / 7;
+	const responsive = res ? 30 : 50;
+	const dasharray = (responsive * 2 * 22) / 7;
 	const timeRest = (dasharray / time) * counter;
-
 	return (
 		<>
 			<div className="counter">
 				<svg>
-					<circle cy={50} cx={50} r={50} className="circle"></circle>
+					<circle
+						cy={responsive}
+						cx={responsive}
+						r={responsive}
+						className="circle"
+					></circle>
 					<circle
 						strokeDashoffset={timeRest}
-						cy={50}
-						cx={50}
-						r={50}
+						cy={responsive}
+						cx={responsive}
+						r={responsive}
 						className="circle circle__color"
 					></circle>
 				</svg>
@@ -65,6 +77,10 @@ export default function Counter({
 			<div className="counter__buttons">
 				{children}
 				<div className="button__pause">
+					<Button
+						handleClick={handleOpenTerminal}
+						text={`${openTerminal ? 'Cerrar' : 'Abrir'} Terminal`}
+					/>
 					<Button
 						handleClick={() => handleSave(counter)}
 						text="Guardar"

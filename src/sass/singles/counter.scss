@@ -2,6 +2,10 @@
 	position: relative;
 	width: 110px;
 	height: 110px;
+	@include responsive(650px) {
+		height: 70px;
+		width: 70px;
+	}
 	&__div {
 		position: absolute;
 		top: 0;
@@ -15,5 +19,14 @@
 		flex-grow: 1;
 		@include flex(column, nowrap, space-between, center, 0);
 		height: calc(100% - 9.875em);
+		@include responsive(900px) {
+			// height: 10em;
+			height: 8em;
+			@include flex(row, nowrap, center, center, 1em);
+			flex-grow: 0;
+		}
+		@include responsive(500px) {
+			gap: 0.3em;
+		}
 	}
 }

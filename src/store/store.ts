@@ -16,11 +16,21 @@ const pokemonsSlice: StateCreator<GamesPokemon> = (set) => ({
 	},
 	pokemons: [],
 });
-
-export const useBearStore = create<GamesPokemon & UserGame & Notification>()(
-	(...set) => ({
-		...pokemonsSlice(...set),
-		...userSlice(...set),
-		...notificationSlice(...set),
-	}),
-);
+interface Responsive {
+	openTerminal: boolean;
+	handleOpenTerminal: () => void;
+}
+const responsiveSlice: StateCreator<Responsive> = (set) => ({
+	openTerminal: false,
+	handleOpenTerminal: () => {
+		set((state) => ({ openTerminal: !state.openTerminal }));
+	},
+});
+export const useBearStore = create<
+	GamesPokemon & UserGame & Notification & Responsive
+>()((...set) => ({
+	...pokemonsSlice(...set),
+	...userSlice(...set),
+	...notificationSlice(...set),
+	...responsiveSlice(...set),
+}));
