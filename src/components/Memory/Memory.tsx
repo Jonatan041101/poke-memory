@@ -31,7 +31,7 @@ export const parseDates = () => {
 export default function Memory({ pokemons }: Props) {
 	const [state, dispatch] = useReducer(reducerMemory, MEMORY_STATE);
 	const stateStore = useBearStore((state) => state);
-	const { userName, changeName, createNotification } = stateStore;
+	const { userName, notification, changeName, createNotification } = stateStore;
 	const { poke } = useMixCards(
 		state.countCardsMix,
 		false,
@@ -106,7 +106,9 @@ export default function Memory({ pokemons }: Props) {
 			});
 			return;
 		}
-		createNotification('Agregue un nick de al menos 3 caracteres.', '#910102');
+		if (notification.length < 1) {
+			createNotification('Agregue un nick de al menos 3 caracteres.', '#910102');
+		}
 	};
 	const handlePauseGame = () => {
 		dispatch({ type: 'memory/pause', payload: true });
@@ -149,7 +151,9 @@ export default function Memory({ pokemons }: Props) {
 		window.localStorage.setItem('Jonh', JSON.stringify([gameSave]));
 
 		const notify = 'Juego guardado';
-		createNotification(notify, '#fff');
+		if (notification.length < 1) {
+			createNotification(notify, '#fff');
+		}
 	};
 	// const modalLoad = (open: boolean) => {
 	// 	dispatch({ type: 'memory/modal-load', payload: open });
@@ -158,7 +162,9 @@ export default function Memory({ pokemons }: Props) {
 		const games = parseDates();
 		console.log({ games: games[0] });
 		dispatch({ type: 'memory/load', payload: games[0].game });
-		createNotification('Partida cargada', '#fff');
+		if (notification.length < 1) {
+			createNotification('Partida cargada', '#fff');
+		}
 		changeName(games[0].user);
 	};
 

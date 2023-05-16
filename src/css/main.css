@@ -862,7 +862,7 @@ select:focus {
   animation-name: load;
   animation-duration: 2s;
   animation-fill-mode: backwards;
-  animation-timing-function: ease;
+  animation-timing-function: linear;
 }
 
 @keyframes load {
