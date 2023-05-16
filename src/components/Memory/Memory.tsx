@@ -146,7 +146,6 @@ export default function Memory({ pokemons }: Props) {
 			}),
 			user: userName,
 		};
-		console.log({ gameSave });
 
 		window.localStorage.setItem('Jonh', JSON.stringify([gameSave]));
 
@@ -160,7 +159,6 @@ export default function Memory({ pokemons }: Props) {
 	// };
 	const handleModalLoad = () => {
 		const games = parseDates();
-		console.log({ games: games[0] });
 		dispatch({ type: 'memory/load', payload: games[0].game });
 		if (notification.length < 1) {
 			createNotification('Partida cargada', '#fff');

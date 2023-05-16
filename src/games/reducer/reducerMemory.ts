@@ -29,8 +29,6 @@ export default function reducerMemory(
 ) {
 	switch (action.type) {
 		case 'memory/play': {
-			console.log('hola');
-
 			return {
 				...state,
 				playGame: action.payload.inPlay,
@@ -157,8 +155,6 @@ export default function reducerMemory(
 			};
 		}
 		case 'memory/pause': {
-			console.log('holis - pause');
-
 			return {
 				...state,
 				pause: true,
