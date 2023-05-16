@@ -1,17 +1,19 @@
 .button {
 	border: 0.2em solid #fff;
-	padding: 0.5em;
+	padding: 0.1em;
 	transition: 0.4s ease;
 	box-shadow: 0.1em 0.2em 0.5em #000;
 	overflow: hidden;
 	&:hover {
 		padding: 0;
 	}
+
 	&__button {
-		@include flex(row, nowrap, center, center, 0.3em);
+		@include flex(row, nowrap, space-between, center, 0.3em);
 		position: relative;
-		padding: 0.7em 1.5em;
+		padding: 0.5em;
 		// font-weight: 600;
+		width: 190px;
 		background: transparent;
 		color: #fff;
 		cursor: pointer;
@@ -46,8 +48,31 @@
 			}
 		}
 	}
+
 	&__span {
 		font-size: 1.3em;
 		letter-spacing: 0.05em;
+	}
+	&__i span {
+		@include flex(row, nowrap, center, center, 0.3em);
+		position: relative;
+	}
+	&__pause {
+		@include flex(column, nowrap, center, center, 0.3em);
+	}
+	&__counter {
+		height: 100%;
+		@include flex(column, nowrap, center, center, 1em);
+	}
+	&__ability {
+		top: 0;
+		right: 0;
+		background: #000;
+		border-radius: 50%;
+		width: 1.2em;
+		height: 1.2em;
+		position: absolute;
+		color: #fff;
+		@include flex(column, nowrap, center, center, 1em);
 	}
 }

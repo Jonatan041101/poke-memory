@@ -1,54 +1,42 @@
-import { Pokemon } from '@/types/types';
 import React from 'react';
-import TextInfo from '../TextInfo/TextInfo';
-import Image from 'next/image';
-import InfoPoke from '../InfoPoke/InfoPoke';
-import TitlePokemon from '../TitlePokemon/TitlePokemon';
+import BackCard from '../BackCard/BackCard';
+import { Pokemon } from '@/types/types';
+import FrontCard from '../FrontCard/FrontCard';
 
 type Props = {
+	pokemonAssert: number[];
+	pokemonInCache: number[];
+	pokemonFlip: number[];
+	index: number;
 	pokemon: Pokemon;
+	handleAddCachePokemon: (index: number, pokemon: Pokemon) => void;
 };
 
-interface WH {
-	weight: string;
-	height: string;
-}
-
-export default function Card({ pokemon }: Props) {
-	const allStats = pokemon.stats.slice(0, 3).map((pokemon) => ({
-		name: pokemon.stat.name,
-		info: `${pokemon.base_stat}`,
-	}));
-	const widthHeight: WH = {
-		height: `${pokemon.height}`,
-		weight: `${pokemon.weight}`,
-	};
-	const allWH: [string, string][] = Object.entries(widthHeight);
-
+export default function Card({
+	index,
+	pokemon,
+	pokemonInCache,
+	pokemonAssert,
+	pokemonFlip,
+	handleAddCachePokemon,
+}: Props) {
 	return (
-		<article className="card">
-			<div className="card__container">
-				<Image
-					className="card__image"
-					src={pokemon.sprites.other?.dream_world.front_default ?? ''}
-					alt=""
-					width={100}
-					height={100}
-				/>
-				<section className="card__section">
-					<TitlePokemon name={pokemon.name} types={pokemon.types} />
-					<InfoPoke>
-						{allWH.map((pokemon) => (
-							<TextInfo name={pokemon[0]} info={pokemon[1]} />
-						))}
-					</InfoPoke>
-					<InfoPoke>
-						{allStats.map(({ info, name }) => (
-							<TextInfo name={name} info={info} />
-						))}
-					</InfoPoke>
-				</section>
+		<div
+			className="card__perspective"
+			onClick={() => handleAddCachePokemon(index, pokemon)}
+		>
+			<div
+				className={`card__flip ${
+					pokemonInCache.includes(index) ||
+					pokemonAssert.includes(index) ||
+					pokemonFlip.includes(index)
+						? 'card__click'
+						: ''
+				}`}
+			>
+				<FrontCard pokemon={pokemon} />
+				<BackCard />
 			</div>
-		</article>
+		</div>
 	);
 }

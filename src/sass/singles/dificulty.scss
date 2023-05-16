@@ -1,0 +1,45 @@
+.dificulty {
+	overflow: hidden;
+	// background: red;
+	width: 5em;
+	&__button {
+		@include flex(row, nowrap, center, center, 0.3em);
+		background: transparent;
+		padding: 0.4em;
+		border: 0.1em solid #fff;
+		font-size: 1.1em;
+		width: 100%;
+		letter-spacing: 0.05em;
+		font-weight: bold;
+		position: relative;
+		transition: 0.5s ease;
+		cursor: pointer;
+		&:hover {
+			background: #fff;
+			color: #000;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+
+			top: -0.6em;
+			left: -0.5em;
+			width: 1em;
+			height: 1em;
+			border-right: 0.1em solid #fff;
+			background: #000;
+			transform: rotate(45deg);
+		}
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: -0.5em;
+			right: -0.5em;
+			width: 1em;
+			height: 1em;
+			border-left: 0.1em solid #fff;
+			background: #000;
+			transform: rotate(45deg);
+		}
+	}
+}

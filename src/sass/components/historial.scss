@@ -1,0 +1,41 @@
+.historial {
+	@include flex(column, nowrap, flex-start, center, 0.5em);
+	margin: 0.2em;
+	font-size: 14px;
+	height: $height-config;
+	background: #3533;
+	border-radius: 1em;
+	overflow: auto;
+	&__cero {
+		height: 100%;
+		@include flex(column, nowrap, center, center, 0);
+	}
+	&__article {
+		@include flex(column, nowrap, center, center, 0);
+		padding: 0.3em;
+		width: 100%;
+		background: #3533;
+		border-radius: 0.2em;
+	}
+	&__images {
+		@include flex(column, nowrap, center, center, 0em);
+		width: 5.6em;
+		height: 6.5em;
+	}
+	&__container {
+		@include flex(row, nowrap, space-evenly, center, 0.5em);
+		width: 100%;
+	}
+	&__icon {
+		// background: red;
+		height: 7em;
+		color: #fff;
+		@include flex(column, nowrap, center, center, 0.5em);
+	}
+	&__text {
+		@include flex(column, nowrap, center, center, 0.5em);
+		width: 100%;
+		background: #3533;
+		border-radius: 0.5em;
+	}
+}

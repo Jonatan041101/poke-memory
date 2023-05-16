@@ -6,19 +6,22 @@ interface Props {
 	text: string;
 	handleClick: () => void;
 	icon?: IconsTypes;
+	ability?: string;
 }
 
 export default function Button({
 	text = 'Doble Carta',
 	handleClick,
 	icon,
+	ability,
 }: Props) {
 	return (
 		<div className="button">
 			<button className="button__button" onClick={handleClick}>
 				<span className="button__span">{text}</span>
 				{icon && (
-					<i>
+					<i className="button__i">
+						{ability && <div className="button__ability">{ability}</div>}
 						<Icon nameIcon={icon} />
 					</i>
 				)}

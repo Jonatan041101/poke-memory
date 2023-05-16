@@ -19,6 +19,10 @@
   font-family: FuturaLight;
   src: url("../../public/fonts/Futura/FuturaLight.ttf");
 }
+@font-face {
+  font-family: PokemonSolid;
+  src: url("../../public/fonts/PokemonS.ttf");
+}
 /* Definimos las Custom properties */
 :root {
   /* Colores */
@@ -235,7 +239,6 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 0;
-  padding: 6rem;
   min-height: 100vh;
 }
 
@@ -252,11 +255,41 @@ select:focus {
   transition: 0.4s ease;
   transform: rotateY(180deg);
 }
+.card__row {
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.card__movements {
+  min-height: 100vh;
+  flex-grow: 1;
+  min-width: 16em;
+}
+.card__buttons {
+  min-height: 100vh;
+  flex-grow: 1;
+  min-width: 16em;
+}
+.card__all {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.7em;
+  align-content: center;
+  flex-grow: 1;
+  max-width: 1200px;
+  position: relative;
+  background: rgba(51, 85, 51, 0.2);
+  padding: 2em 0.5em;
+  height: calc(100vh - 43px);
+  border-radius: 0.5em;
+}
 .card__perspective {
   perspective: 500px;
-}
-.card__perspective:hover .card__flip {
-  transform: rotateY(180deg);
 }
 .card__flip {
   position: relative;
@@ -265,12 +298,8 @@ select:focus {
   height: 10em;
   transition: 0.4s ease;
 }
-.card__all {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.7em;
+.card__click {
+  transform: rotateY(180deg);
 }
 .card__container {
   display: flex;
@@ -326,6 +355,7 @@ select:focus {
   backface-visibility: hidden;
   transition: 0.4s ease;
   transform: rotateY(0deg);
+  cursor: pointer;
 }
 .card__pokeball {
   object-fit: contain;
@@ -335,7 +365,7 @@ select:focus {
 
 .button {
   border: 0.2em solid #fff;
-  padding: 0.5em;
+  padding: 0.1em;
   transition: 0.4s ease;
   box-shadow: 0.1em 0.2em 0.5em #000;
   overflow: hidden;
@@ -346,11 +376,12 @@ select:focus {
 .button__button {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 0.3em;
   position: relative;
-  padding: 0.7em 1.5em;
+  padding: 0.5em;
+  width: 190px;
   background: transparent;
   color: #fff;
   cursor: pointer;
@@ -389,6 +420,44 @@ select:focus {
   font-size: 1.3em;
   letter-spacing: 0.05em;
 }
+.button__i span {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  position: relative;
+}
+.button__pause {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.button__counter {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.button__ability {
+  top: 0;
+  right: 0;
+  background: #000;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  position: absolute;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
 
 .text {
   text-align: center;
@@ -412,6 +481,397 @@ select:focus {
 }
 .span__text {
   font-size: 0.9em;
+}
+
+.title {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 0.5em 0;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.title__flex {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.title__imageT {
+  position: relative;
+  width: 1.2em;
+  height: 100%;
+}
+.title__img {
+  position: absolute;
+  top: -0.719em;
+}
+
+.historial {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.2em;
+  font-size: 14px;
+  height: calc(100vh - 43px);
+  background: rgba(51, 85, 51, 0.2);
+  border-radius: 1em;
+  overflow: auto;
+}
+.historial__cero {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+.historial__article {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0.3em;
+  width: 100%;
+  background: rgba(51, 85, 51, 0.2);
+  border-radius: 0.2em;
+}
+.historial__images {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0em;
+  width: 5.6em;
+  height: 6.5em;
+}
+.historial__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+}
+.historial__icon {
+  height: 7em;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.historial__text {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  background: rgba(51, 85, 51, 0.2);
+  border-radius: 0.5em;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.modal {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  backdrop-filter: blur(1em);
+}
+.modal__section {
+  position: relative;
+  width: 25em;
+  height: 18em;
+  background: #000;
+  border-radius: 1em;
+  border: 0.2em solid #fff;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.modal__dificulty {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.modal__loads {
+  z-index: 30;
+  padding: 2em 1em;
+}
+.modal__close {
+  cursor: pointer;
+  position: absolute;
+  top: 0.2em;
+  right: -0.25em;
+}
+.modal__close:hover {
+  color: #aa2e2e;
+}
+.modal__mini {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.dificulty {
+  overflow: hidden;
+  width: 5em;
+}
+.dificulty__button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  background: transparent;
+  padding: 0.4em;
+  border: 0.1em solid #fff;
+  font-size: 1.1em;
+  width: 100%;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+.dificulty__button:hover {
+  background: #fff;
+  color: #000;
+}
+.dificulty__button::after {
+  content: "";
+  position: absolute;
+  top: -0.6em;
+  left: -0.5em;
+  width: 1em;
+  height: 1em;
+  border-right: 0.1em solid #fff;
+  background: #000;
+  transform: rotate(45deg);
+}
+.dificulty__button::before {
+  content: "";
+  position: absolute;
+  bottom: -0.5em;
+  right: -0.5em;
+  width: 1em;
+  height: 1em;
+  border-left: 0.1em solid #fff;
+  background: #000;
+  transform: rotate(45deg);
+}
+
+.user {
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  height: 2em;
+}
+.user__label {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.user__input {
+  border-bottom: 0.1em solid #fff;
+  outline: none;
+  font-size: 1em;
+  padding: 0.4em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  fill-opacity: 0.75;
+  stroke: #000;
+  stroke-width: 10;
+  transform: translate(5px, 5px);
+}
+.circle__color {
+  stroke: #fff;
+  stroke-dasharray: 314.2857142857;
+  transition: 1s linear;
+}
+
+.counter {
+  position: relative;
+  width: 110px;
+  height: 110px;
+}
+.counter__div {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  font-weight: bold;
+  font-size: 2em;
+}
+.counter__buttons {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  height: calc(100% - 9.875em);
+}
+
+.buttons {
+  height: calc(100vh - 43px);
+  background: rgba(51, 85, 51, 0.2);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  padding: 1em 0;
+  border-radius: 1em;
+}
+
+.puntaje {
+  width: 18em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.2em;
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 25;
+  top: 0;
+  left: 0;
+  font-family: PokemonSolid;
+  letter-spacing: 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.loading__container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.loading__p {
+  font-size: 2em;
+  color: #fff;
+  transition: 0.5s ease;
+}
+.loading__pokeball {
+  color: #fff;
+  border-radius: 50%;
+  animation-name: pokeball;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+  animation-iteration-count: infinite;
+  transition: 0.5s linear;
+  width: 70px;
+  height: 70px;
+}
+.loading__opacity {
+  transform: scale(1.5);
+  opacity: 0;
+}
+
+@keyframes pokeball {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.notification {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  z-index: 5;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.notification__article {
+  background: #000;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  width: 15em;
+  height: 3em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  letter-spacing: 0.1em;
+  border-radius: 0.4em;
+  position: relative;
+  text-align: center;
+}
+.notification__article:hover .notification__load {
+  animation-play-state: paused;
+}
+.notification__load {
+  background: #fff;
+  height: 0.2em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation-name: load;
+  animation-duration: 2s;
+  animation-fill-mode: backwards;
+  animation-timing-function: linear;
+}
+
+@keyframes load {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

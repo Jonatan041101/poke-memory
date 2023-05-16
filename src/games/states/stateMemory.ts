@@ -1,0 +1,26 @@
+import { GamesMemory } from '../types/types';
+
+export const MEMORY_STATE: GamesMemory = {
+	nickUser: '',
+	countCardsMix: 8,
+	countAsserts: 0,
+	countClicks: 0,
+	countAdd: 0,
+	prevHit: null,
+	countFlip: 1,
+	powerFlipPokemon: [],
+	cachePokemon: [],
+	assertPokemon: [],
+	pokemonStorage: null,
+	timeStorage: null,
+	cacheHistorialOne: null,
+	cacheHistorialTwo: null,
+	historial: [],
+	gameOver: false,
+	playGame: false,
+	win: false,
+	pause: true,
+	refresh: false,
+	hit: false,
+	load: false,
+};

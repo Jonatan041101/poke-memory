@@ -1,0 +1,43 @@
+.loading {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 25;
+	top: 0;
+	left: 0;
+	font-family: PokemonSolid;
+	letter-spacing: 0.5em;
+	@include flex(column, nowrap, center, center, 1em);
+	&__container {
+		@include flex(column, nowrap, center, center, 1em);
+	}
+	&__p {
+		font-size: 2em;
+		color: #fff;
+		transition: 0.5s ease;
+	}
+	&__pokeball {
+		color: #fff;
+		border-radius: 50%;
+		animation-name: pokeball;
+		animation-duration: 2s;
+		animation-timing-function: linear;
+		animation-fill-mode: backwards;
+		animation-iteration-count: infinite;
+		transition: 0.5s linear;
+		width: 70px;
+		height: 70px;
+	}
+	&__opacity {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+@keyframes pokeball {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

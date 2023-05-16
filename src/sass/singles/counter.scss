@@ -1,0 +1,19 @@
+.counter {
+	position: relative;
+	width: 110px;
+	height: 110px;
+	&__div {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		@include flex(column, nowrap, center, center, 0);
+		font-weight: bold;
+		font-size: 2em;
+	}
+	&__buttons {
+		flex-grow: 1;
+		@include flex(column, nowrap, space-between, center, 0);
+		height: calc(100% - 9.875em);
+	}
+}

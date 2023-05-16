@@ -1,0 +1,20 @@
+.title {
+	font-size: 1.1em;
+	text-align: center;
+	padding: 0.5em 0;
+	font-weight: bold;
+	text-transform: capitalize;
+	&__flex {
+		// background: rebeccapurple;
+		@include flex(row, nowrap, center, center, 0.5em);
+	}
+	&__imageT {
+		position: relative;
+		width: 1.2em;
+		height: 100%;
+	}
+	&__img {
+		position: absolute;
+		top: -0.719em;
+	}
+}

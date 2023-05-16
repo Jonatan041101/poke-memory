@@ -1,3 +1,4 @@
+import { GamesMemory } from '@/games/types/types';
 import { NameDificulty, Nivel } from './enums';
 
 export interface Pokemon {
@@ -234,4 +235,27 @@ export interface GameOver {
 	message: string;
 	results: boolean;
 }
-export type IconsTypes = 'Flip' | 'AddCards';
+export type IconsTypes =
+	| 'Flip'
+	| 'AddCards'
+	| 'Nice'
+	| 'Bad'
+	| 'Play'
+	| 'Pause'
+	| 'Refresh'
+	| 'Pokeball'
+	| 'Guardar'
+	| 'Cargar'
+	| 'Close';
+export type Change = React.ChangeEvent<HTMLInputElement>;
+export type Form = React.FormEvent<HTMLFormElement>;
+export interface Btn {
+	text: string;
+	icon?: IconsTypes;
+}
+export interface GamesSaved {
+	game: GamesMemory;
+	user: string;
+	date: string;
+}
+export type ColorsNotification = '#910102' | '#fff' | '#01371d';
