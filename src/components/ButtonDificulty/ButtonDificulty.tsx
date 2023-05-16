@@ -1,5 +1,5 @@
 import React from 'react';
-import { Btn, IconsTypes } from '@/types/types';
+import { Btn } from '@/types/types';
 import { NameDificulty } from '@/types/enums';
 import ButtonSquare from '../Button/ButtonSquare';
 

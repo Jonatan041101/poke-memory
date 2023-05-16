@@ -1,5 +1,4 @@
 import { Historial } from '@/games/types/types';
-import Image from 'next/image';
 import React from 'react';
 import ImageHistorial from '../ImageHistorial/ImageHistorial';
 import TitleTyping from '../TitleTyping/TitleTyping';
