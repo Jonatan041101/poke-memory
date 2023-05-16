@@ -1,6 +1,5 @@
 import { OneNotify } from '@/store/notifications';
 import { useBearStore } from '@/store/store';
-import { ColorsNotification } from '@/types/types';
 import React from 'react';
 
 interface Props {

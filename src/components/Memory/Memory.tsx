@@ -14,7 +14,6 @@ import { NameDificulty } from '@/types/enums';
 import { useBearStore } from '@/store/store';
 import { GamesMemory, PokemonIndex } from '@/games/types/types';
 import LoadingHome from '../LoadingHome/LoadingHome';
-import LoadGame from '../LoadGame/LoadGame';
 import AlertModal from '../AlertModal';
 
 interface Props {
