@@ -17,6 +17,8 @@ export default function useMixCards(
 	pokemon: Pokemon[],
 	pokemonStorage: Pokemon[] | null,
 ) {
+	console.log({ restart });
+
 	const [poke, setPoke] = useState<Pokemon[]>([]);
 	const cache: Cache = {};
 	const pokemons: Pokemon[] = [];

@@ -7,6 +7,7 @@ interface Props {
 	handleClick: () => void;
 	icon?: IconsTypes;
 	ability?: string;
+	description?: string;
 }
 
 export default function Button({
@@ -14,18 +15,22 @@ export default function Button({
 	handleClick,
 	icon,
 	ability,
+	description,
 }: Props) {
 	return (
-		<div className="button">
-			<button className="button__button" onClick={handleClick}>
-				<span className="button__span">{text}</span>
-				{icon && (
-					<i className="button__i">
-						{ability && <div className="button__ability">{ability}</div>}
-						<Icon nameIcon={icon} />
-					</i>
-				)}
-			</button>
+		<div className="button__div" onClick={handleClick}>
+			<div className="button">
+				<button className="button__button">
+					<span className="button__span">{text}</span>
+					{icon && (
+						<i className="button__i">
+							{ability && <div className="button__ability">{ability}</div>}
+							<Icon nameIcon={icon} />
+						</i>
+					)}
+				</button>
+			</div>
+			{description && <span className="button__description">{description}</span>}
 		</div>
 	);
 }

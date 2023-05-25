@@ -12,8 +12,12 @@ export default function Puntaje({ assert, intents }: Props) {
 			<TitleTyping text="Resultados" />
 			<TitleTyping text={`Intentos: ${intents}`} />
 			<TitleTyping text={`Aciertos: ${assert}`} />
-			<TitleTyping text={`Puntaje: 0`} />
+			<TitleTyping
+				text={`Puntaje: ${
+					isNaN((100 * assert) / intents) ? 0 : (100 * assert) / intents
+				}`}
+			/>
 		</article>
 	);
 }
-// ${(100 * assert) / intents  } Iba en puntaje
+//  Iba en puntaje
