@@ -123,6 +123,7 @@ export default function reducerMemory(
 			return {
 				...state,
 				hit: false,
+				historial: [...state.historial, 'HIT'],
 			};
 		}
 		case 'memory/change-dificulty': {

@@ -40,7 +40,7 @@ export default function Counter({
 
 			return () => clearTimeout(idTime);
 		}
-	}, [counter, gameStart, endGame, gamePause, refresh]);
+	}, [counter, gameStart, endGame, gamePause, refresh, window.outerWidth]);
 	useEffect(() => {
 		if (hit) {
 			setCounter((counter) => counter + 2);
@@ -51,6 +51,20 @@ export default function Counter({
 			setCounter(() => timeStorage);
 		}
 	}, [timeStorage]);
+	useEffect(() => {
+		const handleResize = () => {
+			if (window.outerWidth <= 650) {
+				setRes(true);
+			} else {
+				setRes(false);
+			}
+		};
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
 	const responsive = res ? 30 : 50;
 	const dasharray = (responsive * 2 * 22) / 7;
 	const timeRest = (dasharray / time) * counter;
@@ -77,10 +91,12 @@ export default function Counter({
 			<div className="counter__buttons">
 				{children}
 				<div className="button__pause">
-					<Button
-						handleClick={handleOpenTerminal}
-						text={`${openTerminal ? 'Cerrar' : 'Abrir'} Terminal`}
-					/>
+					<div className="button__none">
+						<Button
+							handleClick={handleOpenTerminal}
+							text={`${openTerminal ? 'Cerrar' : 'Abrir'} Terminal`}
+						/>
+					</div>
 					<Button
 						handleClick={() => handleSave(counter)}
 						text="Guardar"

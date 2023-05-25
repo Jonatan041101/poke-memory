@@ -65,12 +65,14 @@ export default function ButtonsActions({
 								icon="Flip"
 								text="Volteo"
 								handleClick={handlePowerFlipAll}
+								description="Voltea todos las cartas"
 							/>
 							<Button
 								ability={`${powersAddCard}`}
 								icon="AddCards"
 								text="Doble carta"
 								handleClick={handlePowerAddToCards}
+								description="Cada 3 HIT ganas una carga y puedes voltear un par de carta."
 							/>
 						</div>
 					</Counter>

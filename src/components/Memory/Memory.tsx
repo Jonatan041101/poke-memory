@@ -33,7 +33,7 @@ export default function Memory({ pokemons }: Props) {
 	const { userName, notification, changeName, createNotification } = stateStore;
 	const { poke } = useMixCards(
 		state.countCardsMix,
-		false,
+		state.refresh,
 		pokemons,
 		state.pokemonStorage,
 	);

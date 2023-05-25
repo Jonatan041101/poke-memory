@@ -283,6 +283,7 @@ select:focus {
     z-index: 35;
     transform: translateX(-18em);
     transition: 0.5s ease;
+    background: #000;
   }
 }
 .card__buttons {
@@ -456,6 +457,7 @@ select:focus {
   transition: 0.4s ease;
   box-shadow: 0.1em 0.2em 0.5em #000;
   overflow: hidden;
+  position: relative;
 }
 .button:hover {
   padding: 0;
@@ -638,6 +640,78 @@ select:focus {
   justify-content: center;
   align-items: center;
   gap: 1em;
+}
+.button__none {
+  width: 100%;
+  display: none;
+}
+@media screen and (max-width: 1500px) {
+  .button__none {
+    display: block;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .button__none {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .button__none {
+    width: 7em;
+    height: 3em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .button__none {
+    width: 3em;
+    height: 3em;
+    display: none;
+  }
+}
+.button__div {
+  position: relative;
+}
+@media screen and (max-width: 1400px) {
+  .button__div {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .button__div {
+    width: 7em;
+    height: 3em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .button__div {
+    width: 3em;
+    height: 3em;
+  }
+}
+.button__div:hover .button__description {
+  display: block;
+}
+.button__description {
+  position: absolute;
+  z-index: 50;
+  right: 0;
+  top: -3.5em;
+  background: #000;
+  text-align: center;
+  border: 0.1em solid #fff;
+  height: 3.5em;
+  width: 12.5em;
+  display: none;
 }
 
 .text {
@@ -1021,6 +1095,7 @@ select:focus {
   font-size: 2em;
   color: #fff;
   transition: 0.5s ease;
+  text-align: center;
 }
 .loading__pokeball {
   color: #fff;
